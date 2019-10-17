@@ -13,7 +13,7 @@ namespace Larder.Models
         public int RecipeID { get; set; }
 
         //Properties
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal")]
         public decimal Amount { get; set; }
         public Unit Unit { get; set; }
         public bool Larder { get; set; }

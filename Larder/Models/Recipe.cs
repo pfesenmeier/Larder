@@ -18,7 +18,7 @@ namespace Larder.Models
         [DisplayName("Plating Styles")]
         public virtual ICollection<RecipePlating> RecipePlatings { get; private set; }
         [DisplayName("Steps")]
-        public virtual ICollection<Action> Actions { get; private set; }
+        public virtual ICollection<RecipeStep> Actions { get; private set; }
 
         //Methods
         public override string ToString() => $"{Name}";
@@ -28,7 +28,7 @@ namespace Larder.Models
         {
             Ingredients = new Collection<Ingredient>();
             RecipePlatings = new Collection<RecipePlating>();
-            Actions = new Collection<Action>();
+            Actions = new Collection<RecipeStep>();
         }
     }
 }

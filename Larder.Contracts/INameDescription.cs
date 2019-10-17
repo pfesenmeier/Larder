@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Larder.Contracts
 {
-    interface INameDescription
+    public interface INameDescription
     {
         string Name { get; set; }
         string Description { get; set; }

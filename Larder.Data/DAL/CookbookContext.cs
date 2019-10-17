@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace Larder.Data
+namespace Larder.Data.DAL
 {
     public class CookbookContext : DbContext
     {
@@ -19,7 +19,7 @@ namespace Larder.Data
         {
         }
 
-        public System.Data.Entity.DbSet<Larder.Models.Recipe> Recipes { get; set; }
-        public System.Data.Entity.DbSet<Larder.Models.Season> Seasons { get; set; }
+        public System.Data.Entity.DbSet<Larder.Data.Models.Recipe> Recipes { get; set; }
+        public System.Data.Entity.DbSet<Larder.Data.Models.Season> Seasons { get; set; }
     }
 }

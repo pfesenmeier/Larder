@@ -15,12 +15,11 @@ namespace Larder.Data
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public CookbookContext() : base("name=CookbookContext")
+        public CookbookContext() : base("CookbookContext")
         {
         }
 
         public System.Data.Entity.DbSet<Larder.Models.Recipe> Recipes { get; set; }
-
         public System.Data.Entity.DbSet<Larder.Models.Season> Seasons { get; set; }
     }
 }

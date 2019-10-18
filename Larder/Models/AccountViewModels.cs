@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Larder.Models
+namespace Larder.WebMVC.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

@@ -106,9 +106,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Larder\Larder.csproj">
+    <ProjectReference Include="..\Larder\Larder.WebMVC.csproj">
       <Project>{AF951C67-53C0-4421-9061-8E6F51DE3144}</Project>
-      <Name>Larder</Name>
+      <Name>Larder.WebMVC</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Larder;
-using Larder.Controllers;
+using Larder.WebMVC;
+using Larder.WebMVC.Controllers;
 
 namespace Larder.Tests.Controllers
 {

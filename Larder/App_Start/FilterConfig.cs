@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Larder
+namespace Larder.WebMVC
 {
     public class FilterConfig
     {

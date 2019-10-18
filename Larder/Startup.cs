@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Larder.Startup))]
-namespace Larder
+[assembly: OwinStartupAttribute(typeof(Larder.WebMVC.Startup))]
+namespace Larder.WebMVC
 {
     public partial class Startup
     {

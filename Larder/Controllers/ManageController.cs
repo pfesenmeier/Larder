@@ -6,9 +6,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Larder.Models;
+using Larder.WebMVC.Models;
+using Larder.WebMVC;
 
-namespace Larder.Controllers
+namespace Larder.WebMVC.Controllers
 {
     [Authorize]
     public class ManageController : Controller

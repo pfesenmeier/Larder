@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Larder.Models;
+using Larder.WebMVC.Models;
 
-namespace Larder
+namespace Larder.WebMVC
 {
     public class EmailService : IIdentityMessageService
     {

@@ -1,4 +1,5 @@
-﻿using Larder.Models;
+﻿using Larder.WebMVC;
+using Larder.WebMVC.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Larder.Controllers
+namespace Larder.WebMVC.Controllers
 {
     [Authorize]
     public class AccountController : Controller

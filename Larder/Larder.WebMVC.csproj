@@ -19,7 +19,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Larder</RootNamespace>
-    <AssemblyName>Larder</AssemblyName>
+    <AssemblyName>Larder.WebMVC</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -180,12 +180,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -317,6 +315,10 @@
     <ProjectReference Include="..\Larder.Data\Larder.Data.csproj">
       <Project>{EF166BA7-AB60-4BED-8A03-3F79A71225A0}</Project>
       <Name>Larder.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Larder.Models\Larder.Models.csproj">
+      <Project>{05F8128F-A9B7-4EEF-A1C7-CAA62FFB80FF}</Project>
+      <Name>Larder.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

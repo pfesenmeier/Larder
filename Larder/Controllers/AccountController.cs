@@ -1,5 +1,5 @@
-﻿using Larder.WebMVC;
-using Larder.WebMVC.Models;
+﻿using Larder.Models.Identity;
+using Larder.WebMVC;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;

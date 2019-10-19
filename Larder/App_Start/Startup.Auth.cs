@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Larder.WebMVC.Models;
+using Larder.Models.Identity;
 
 namespace Larder.WebMVC
 {

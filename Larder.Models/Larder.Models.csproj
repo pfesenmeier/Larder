@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EF166BA7-AB60-4BED-8A03-3F79A71225A0}</ProjectGuid>
+    <ProjectGuid>{05F8128F-A9B7-4EEF-A1C7-CAA62FFB80FF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Larder.Data</RootNamespace>
-    <AssemblyName>Larder.Data</AssemblyName>
+    <RootNamespace>Larder.Models</RootNamespace>
+    <AssemblyName>Larder.Models</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -84,22 +84,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\CookbookContext.cs" />
-    <Compile Include="Models\Food.cs" />
-    <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\Larder.cs" />
-    <Compile Include="Models\Plating.cs" />
-    <Compile Include="Models\Recipe.cs" />
-    <Compile Include="Models\RecipePlating.cs" />
-    <Compile Include="Models\Action.cs" />
-    <Compile Include="Models\Season.cs" />
+    <Compile Include="IngredientCreate.cs" />
+    <Compile Include="IngredientDetail.cs" />
+    <Compile Include="IngredientEdit.cs" />
+    <Compile Include="IngredientListItem.cs" />
+    <Compile Include="Identity\AccountViewModels.cs" />
+    <Compile Include="Identity\IdentityModels.cs" />
+    <Compile Include="Identity\ManageViewModels.cs" />
+    <Compile Include="PlatingCreate.cs" />
+    <Compile Include="PlatingDetail.cs" />
+    <Compile Include="PlatingEdit.cs" />
+    <Compile Include="PlatingListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Larder.Contracts\Larder.Contracts.csproj">
-      <Project>{214C68AF-1F5D-44C4-86FE-C7DA1B7EB698}</Project>
-      <Name>Larder.Contracts</Name>
-    </ProjectReference>
+    <Compile Include="RecipeCreate.cs" />
+    <Compile Include="RecipeDetail.cs" />
+    <Compile Include="RecipeEdit.cs" />
+    <Compile Include="RecipeListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

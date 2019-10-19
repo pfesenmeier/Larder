@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larder.Data", "Larder.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larder.Contracts", "Larder.Contracts\Larder.Contracts.csproj", "{214C68AF-1F5D-44C4-86FE-C7DA1B7EB698}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larder.Models", "Larder.Models\Larder.Models.csproj", "{05F8128F-A9B7-4EEF-A1C7-CAA62FFB80FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larder.Services", "Larder.Services\Larder.Services.csproj", "{1A6E15F9-F28E-4E47-8886-C3D3D17C8291}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{214C68AF-1F5D-44C4-86FE-C7DA1B7EB698}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214C68AF-1F5D-44C4-86FE-C7DA1B7EB698}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214C68AF-1F5D-44C4-86FE-C7DA1B7EB698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05F8128F-A9B7-4EEF-A1C7-CAA62FFB80FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05F8128F-A9B7-4EEF-A1C7-CAA62FFB80FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05F8128F-A9B7-4EEF-A1C7-CAA62FFB80FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05F8128F-A9B7-4EEF-A1C7-CAA62FFB80FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A6E15F9-F28E-4E47-8886-C3D3D17C8291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6E15F9-F28E-4E47-8886-C3D3D17C8291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6E15F9-F28E-4E47-8886-C3D3D17C8291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6E15F9-F28E-4E47-8886-C3D3D17C8291}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

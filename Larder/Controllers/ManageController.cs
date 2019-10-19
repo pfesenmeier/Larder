@@ -6,8 +6,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Larder.WebMVC.Models;
 using Larder.WebMVC;
+using Larder.Models.Identity;
 
 namespace Larder.WebMVC.Controllers
 {

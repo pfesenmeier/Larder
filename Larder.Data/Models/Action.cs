@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Larder.Data.Models
 {
-    public class RecipeStep : IAuthorID
+    public class Action : IAuthorID
     {
         //Keys
         public int ID { get; set; }

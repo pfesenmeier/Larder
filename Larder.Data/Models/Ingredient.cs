@@ -16,9 +16,8 @@ namespace Larder.Data.Models
         [Column(TypeName = "decimal")]
         public decimal Amount { get; set; }
         public Unit Unit { get; set; }
-        public bool Larder { get; set; }
 
-        //Navigation Object
+        //Navigation Objects
         public virtual Recipe Recipe { get; set; }
 
         //Methods

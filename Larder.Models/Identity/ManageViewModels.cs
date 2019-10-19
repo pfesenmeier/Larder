@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Larder.WebMVC.Models
+namespace Larder.Models.Identity
 {
     public class IndexViewModel
     {

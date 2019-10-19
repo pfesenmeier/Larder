@@ -1,0 +1,70 @@
+﻿Controller
+	[POST]
+	/Recipe/Create
+		RecipeService.CreateRecipe()
+		IngredientService.CreateIngredient(recipeID)
+
+	/Ingredient/Create
+		IngredientService.CreateIngredient()
+
+Ingredient Service
+	Create Ingredient()
+	Create Ingredient(recipeID) //append recipe to ingredient
+	Create Ingredient(recipeID, name, description)
+	(wait.....)
+Recipe Service()
+	Create Ingredient
+
+Larder Service()
+	GetDescription
+	EditLarder
+
+
+Larder: Ingredient    one to many
+
+in Ingredient
+LarderID
+
+Larder Larder
+
+class Larder
+	Id
+	Name
+	Description
+
+//methods
+	Ingredient from LarderList
+		EditLarder(id) => Edit Larder View
+	Get Create Ingredient Page
+		view model
+			Dict<LarderID,LarderName> from Larder Table
+	Post Ingredient
+		put amount, id, etc. in ingredient table
+		if received from larder input, add recipeid, larderid to LarderRecipeList
+	On Delete Ingredient
+
+
+----if ingredient property---------------------------------------
+Larder Ingredient one to many
+
+Ingredient
+	*LarderId - change from Larder
+	*Larder Larder
+
+Larder:Food, IBasic Info, 
+	*List<Step> Steps
+	*List<Ingredient> Ingredient
+
+if ingredient from larder template
+	set own larderID
+
+
+if creating ingredient from larder- PoST
+	add ingredent with larderiD
+if delete ingredient: fine
+if delete larder: fine - cascade delete?
+if looking for larder recipe examples
+	AJAX:
+		look for larderingredient where larder_id = myid
+		list recipes where recipe_id = recipe_id in ingredients
+

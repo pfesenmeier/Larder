@@ -9,7 +9,7 @@ namespace Larder.Models.Ingredient
 {
     public class IngredientCreate : FoodCreate
     {
-        public float Amount { get; set; }
+        public decimal Amount { get; set; }
         public Unit Unit { get; set; }
     }
 }

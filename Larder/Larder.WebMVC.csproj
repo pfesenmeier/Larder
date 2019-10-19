@@ -179,8 +179,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngredientController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Ingredient\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -319,6 +320,10 @@
     <ProjectReference Include="..\Larder.Models\Larder.Models.csproj">
       <Project>{05F8128F-A9B7-4EEF-A1C7-CAA62FFB80FF}</Project>
       <Name>Larder.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Larder.Services\Larder.Services.csproj">
+      <Project>{1A6E15F9-F28E-4E47-8886-C3D3D17C8291}</Project>
+      <Name>Larder.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

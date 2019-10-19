@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Larder.Services
 {
-    class IngredientService
+    public class IngredientService
     {
         private readonly Guid userId;
         public IngredientService(Guid userId)
@@ -58,7 +58,7 @@ namespace Larder.Services
             }
         }
         
-        public IngredientDetail GetNotebyId(int id)
+        public IngredientDetail GetIngredientbyId(int id)
         {
             using (var context = new CookbookContext())
             {

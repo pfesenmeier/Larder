@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Larder.Models.Ingredient
 {
-    class IngredientEdit
+    public class IngredientEdit : FoodEdit
     {
         public decimal Amount { get; set; }
         public Unit Unit { get; set; }

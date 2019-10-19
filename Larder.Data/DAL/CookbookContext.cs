@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Larder.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace Larder.Data.DAL
         {
         }
 
-        public System.Data.Entity.DbSet<Larder.Data.Models.Recipe> Recipes { get; set; }
-        public System.Data.Entity.DbSet<Larder.Data.Models.Season> Seasons { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<Season> Seasons { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
     }
 }

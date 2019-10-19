@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Larder.Models
 {
-    public class FoodListItem : INameDescription
+    public abstract class FoodListItem : INameDescription
     {
         public int ID { get; set; }
         public string Name { get; set; }

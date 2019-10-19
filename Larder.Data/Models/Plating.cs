@@ -7,14 +7,8 @@ using System.Web;
 
 namespace Larder.Data.Models
 {
-    public class Plating : IAuthorID, INameDescription
-    {
-        //Properties
-        public int ID { get; set; }
-        public Guid AuthorID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-
+    public class Plating : Food
+    {   
         //Constructor
         public Plating()
         {

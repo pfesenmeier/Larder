@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Larder.Models.Recipe
+namespace Larder.Models
 {
-    class RecipeListItem : LarderListItem
+    class LarderCreate
     {
     }
 }

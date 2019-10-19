@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Larder.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace Larder.Models.Ingredient
 {
     class IngredientListItem
     {
+        public float Amount { get; set; }
+        public Unit Unit { get; set; }
     }
 }

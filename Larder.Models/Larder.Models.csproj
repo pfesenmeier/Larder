@@ -84,6 +84,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionCreate.cs" />
+    <Compile Include="ActionDetail.cs" />
+    <Compile Include="ActionEdit.cs" />
+    <Compile Include="ActionListItem.cs" />
+    <Compile Include="FoodCreate.cs" />
+    <Compile Include="FoodDetail.cs" />
+    <Compile Include="FoodEdit.cs" />
+    <Compile Include="FoodListItem.cs" />
     <Compile Include="IngredientCreate.cs" />
     <Compile Include="IngredientDetail.cs" />
     <Compile Include="IngredientEdit.cs" />
@@ -91,6 +99,10 @@
     <Compile Include="Identity\AccountViewModels.cs" />
     <Compile Include="Identity\IdentityModels.cs" />
     <Compile Include="Identity\ManageViewModels.cs" />
+    <Compile Include="LarderCreate.cs" />
+    <Compile Include="LarderDetail.cs" />
+    <Compile Include="LarderEdit.cs" />
+    <Compile Include="LarderListItem.cs" />
     <Compile Include="PlatingCreate.cs" />
     <Compile Include="PlatingDetail.cs" />
     <Compile Include="PlatingEdit.cs" />
@@ -104,6 +116,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Larder.Contracts\Larder.Contracts.csproj">
+      <Project>{214C68AF-1F5D-44C4-86FE-C7DA1B7EB698}</Project>
+      <Name>Larder.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Larder.Data\Larder.Data.csproj">
+      <Project>{EF166BA7-AB60-4BED-8A03-3F79A71225A0}</Project>
+      <Name>Larder.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

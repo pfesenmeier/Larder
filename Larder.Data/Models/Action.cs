@@ -13,7 +13,7 @@ namespace Larder.Data.Models
         public Guid AuthorID { get; set; }
         public int RecipeID { get; set; }
         //Property
-        public string Text { get; set; }
+        public string Description { get; set; }
 
         //Navigation Object
         public virtual Recipe Recipe { get; set; }

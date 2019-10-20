@@ -283,10 +283,14 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Ingredient\Index.cshtml" />
+    <Content Include="Views\Ingredient\Create.cshtml" />
+    <Content Include="Views\Ingredient\Details.cshtml" />
+    <Content Include="Views\Ingredient\Edit.cshtml" />
+    <Content Include="Views\Ingredient\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Ingredient\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

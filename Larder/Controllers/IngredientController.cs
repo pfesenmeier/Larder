@@ -92,7 +92,7 @@ namespace Larder.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Your note could not be updated.");
+                ModelState.AddModelError("", "Your ingredient could not be updated.");
                 return View(model);
             }
         }

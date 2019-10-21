@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Larder.Models
 {
-    class ActionListItem
+    public class ActionListItem
     {
+        public int ID { get; set; }
+        public string Description { get; set; }
     }
 }

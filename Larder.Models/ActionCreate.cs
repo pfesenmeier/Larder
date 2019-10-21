@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Larder.Models
 {
-    class ActionCreate
+    public class ActionCreate
     {
+        public string Description { get; set; }
     }
 }

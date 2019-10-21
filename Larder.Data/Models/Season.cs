@@ -19,13 +19,19 @@ namespace Larder.Data.Models
         public bool Fall { get; set; }
 
         //Methods
-        public override string ToString()
+        public List<string> GetSeasons()
         {
             List<string> Seasons = new List<string>();
             if (Winter) { Seasons.Add("Winter"); }
             if (Summer) { Seasons.Add("Summer"); }
             if (Spring) { Seasons.Add("Spring"); }
             if (Fall) { Seasons.Add("Fall"); }
+
+            return Seasons;
+        }
+        public override string ToString()
+        {
+            var Seasons = GetSeasons();
 
             return string.Join(", ", Seasons);
         }

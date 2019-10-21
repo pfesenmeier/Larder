@@ -9,6 +9,6 @@ namespace Larder.Models
 {
     public class LarderListItem : FoodListItem
     {
-        Season Season { get; set; }
+        public Season Season { get; set; }
     }
 }

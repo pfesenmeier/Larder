@@ -20,6 +20,7 @@ namespace Larder.Data.DAL
         {
         }
         public DbSet<Models.Action> Actions { get; set; }
+        public DbSet<LarderModel> Larders { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Season> Seasons { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }

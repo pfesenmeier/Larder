@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Larder.Data.Models
 {
-    public class Larder : Food
+    public class LarderModel : Food
     {
         //IDs
         public int SeasonID { get; set; }

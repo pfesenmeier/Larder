@@ -87,7 +87,7 @@
     <Compile Include="DAL\CookbookContext.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\Larder.cs" />
+    <Compile Include="Models\LarderModel.cs" />
     <Compile Include="Models\Plating.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipePlating.cs" />

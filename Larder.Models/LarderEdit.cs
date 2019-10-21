@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Larder.Models
 {
-    class LarderEdit
+    public class LarderEdit : FoodEdit
     {
     }
 }

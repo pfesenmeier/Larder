@@ -11,8 +11,8 @@ namespace Larder.Data.Models
     { 
         //Properties
         [Column(TypeName = "decimal")]
-        public decimal Amount { get; set; }
-        public Unit Unit { get; set; }
+        public decimal? Amount { get; set; }
+        public Unit? Unit { get; set; }
 
         //Methods
         public override string ToString() => $"{Amount} {Unit} {Name}";

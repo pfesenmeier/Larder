@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Larder.Models.Recipe
 {
-    class RecipeCreate : LarderCreate
+    public class RecipeCreate : LarderCreate
     {
     }
 }

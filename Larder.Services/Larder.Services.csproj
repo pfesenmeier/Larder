@@ -54,6 +54,7 @@
     <Compile Include="ActionService.cs" />
     <Compile Include="IngredientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />

@@ -116,8 +116,6 @@ namespace Larder.Services
                            .Single(e => e.ID == model.ID && e.AuthorID == userId);
                 entity.Name = model.Name;
                 entity.Description = model.Description;
-                entity.Amount = model.Amount;
-                entity.Unit = model.Unit;
                 entity.DateModified = DateTimeOffset.UtcNow;
 
                 return context.SaveChanges() == 1;

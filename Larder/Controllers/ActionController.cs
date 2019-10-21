@@ -17,7 +17,7 @@ namespace Larder.Controllers
             var service = CreateActionService();
             var model = service.GetActions();
 
-            return View();
+            return View(model);
         }
 
         public ActionResult Create()

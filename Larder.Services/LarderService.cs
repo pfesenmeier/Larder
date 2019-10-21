@@ -10,10 +10,10 @@ using Larder.Models.Ingredient;
 
 namespace Larder.Services
 {
-    public class myLarderService
+    public class LarderService
     {
         private readonly Guid userId;
-        public myLarderService(Guid userId)
+        public LarderService(Guid userId)
         {
             this.userId = userId;
         }
@@ -103,6 +103,18 @@ namespace Larder.Services
                         DateCreated = entity.DateCreated,
                         DateModified = entity.DateModified
                     };
+            }
+        }
+
+        public int GetIdbyName(string name)
+        {
+            using (var context = new CookbookContext())
+            {
+                var entity =
+                     context
+                            .Larders
+                            .Single(e => e.Name == name && e.AuthorID == userId);
+                return entity.ID;
             }
         }
 

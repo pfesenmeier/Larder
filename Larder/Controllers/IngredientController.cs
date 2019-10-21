@@ -27,9 +27,19 @@ namespace Larder.Controllers
         }
 
         // GET /Ingredient/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            return View();
+            var model = new IngredientCreate();
+            string modeltype = TempData["InstructionType"].ToString();
+            if (modeltype == "Larder") 
+            {
+                model.LarderId = id;
+            }
+            else if (modeltype == "Recipe")
+            {
+                model.RecipeId = id;
+            }
+            return View(model);
         }
         // POST /Ingredient/Create
         [HttpPost]

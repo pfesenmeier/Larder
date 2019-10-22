@@ -18,19 +18,34 @@ namespace Larder.Services
             this.userId = userId;
         }
 
-        public bool CreateLarder(LarderCreate model)
+        public int CreateLarder(LarderCreate model)
         {
-            var entity = new LarderModel()
-            {
-                AuthorID = userId,
-                Name = model.Name,
-                Description = model.Description,
-                DateCreated = DateTimeOffset.UtcNow,
-            };
             using (var context = new CookbookContext())
             {
+                var season = new Season()
+                {
+                    AuthorID = userId,
+                    Summer = model.Season.Summer,
+                    Fall = model.Season.Fall,
+                    Winter = model.Season.Winter,
+                    Spring = model.Season.Spring
+                };
+
+                context.Seasons.Add(season);
+                context.SaveChanges();
+
+                var entity = new LarderModel()
+                {
+                    AuthorID = userId,
+                    Name = model.Name,
+                    SeasonID = season.ID,
+                    Description = model.Description,
+                    DateCreated = DateTimeOffset.UtcNow,
+                };
+            
                 context.Larders.Add(entity);
-                return context.SaveChanges() == 1;
+                context.SaveChanges();
+                return entity.ID;
             }
         }
 

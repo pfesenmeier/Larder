@@ -32,11 +32,11 @@ namespace Larder.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             var service = CreateLarderService();
-            if (service.CreateLarder(model))
+            int? id = service.CreateLarder(model);
+            if (id != null)
             {
                 TempData["SaveResult"] = "Your larder recipe was created.";
-                var id = service.GetIdbyName(model.Name);
-                RedirectToAction("Create", "Ingredient", new { isRecipe=false, id });
+                return RedirectToAction("Create", "Ingredient", new { isRecipe=false, id });
             }
             else
             {

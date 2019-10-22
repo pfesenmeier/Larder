@@ -295,10 +295,11 @@
     <Content Include="Views\Action\Index.cshtml" />
     <Content Include="Views\Action\Details.cshtml" />
     <Content Include="Views\Action\Delete.cshtml" />
+    <Content Include="Views\Larder\Index.cshtml" />
+    <Content Include="Views\Larder\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Larder\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

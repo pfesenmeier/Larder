@@ -50,10 +50,14 @@ namespace Larder.Controllers
             if ((!ModelState.IsValid) ||
                 (SaveCreate(model) == false)) return View(model);
             var isRecipe = IsRecipe(model);
-            if (isRecipe != null)
+            if (isRecipe == true)
             {
                 return RedirectToAction("Create", new { id = model.RecipeId, isRecipe });
-            }   
+            }
+            else if (isRecipe == false)
+            {
+                return RedirectToAction("Create", new { id = model.LarderId, isRecipe });
+            }
             else return View();
         }
 

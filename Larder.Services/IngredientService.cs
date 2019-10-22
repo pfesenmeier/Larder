@@ -28,6 +28,10 @@ namespace Larder.Services
                 Amount = model.Amount,
                 Unit = model.Unit
             };
+            if (model.RecipeId == null && model.LarderId == null) return false;
+            if (model.RecipeId != null && model.LarderId != null) return false;
+            if (model.RecipeId != null) entity.RecipeId = model.RecipeId;
+            if (model.LarderId != null) entity.LarderId = model.LarderId;
             using (var context = new CookbookContext())
             {
                 context.Ingredients.Add(entity);
@@ -111,5 +115,7 @@ namespace Larder.Services
                 return context.SaveChanges() == 1;
             }
         }
+
+
     }
 }

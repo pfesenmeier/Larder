@@ -36,8 +36,7 @@ namespace Larder.Controllers
             {
                 TempData["SaveResult"] = "Your larder recipe was created.";
                 var id = service.GetIdbyName(model.Name);
-                TempData["InstructionType"] = "Larder";
-                return RedirectToAction($"Ingredient/Create/{id}");
+                RedirectToAction("Create", "Ingredient", new { isRecipe=false, id });
             }
             else
             {

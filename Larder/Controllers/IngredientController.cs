@@ -27,18 +27,19 @@ namespace Larder.Controllers
         }
 
         // GET /Ingredient/Create
-        public ActionResult Create(int id)
+        // Display CreateView for first, and...
+        public ActionResult Create(int id, bool isRecipe)
         {
             var model = new IngredientCreate();
-            string modeltype = TempData["InstructionType"].ToString();
-            if (modeltype == "Larder") 
-            {
-                model.LarderId = id;
-            }
-            else if (modeltype == "Recipe")
+            if (isRecipe)
             {
                 model.RecipeId = id;
             }
+            else
+            {
+                model.LarderId = id;
+            }
+
             return View(model);
         }
         // POST /Ingredient/Create
@@ -46,17 +47,67 @@ namespace Larder.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IngredientCreate model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if ((!ModelState.IsValid) ||
+                (SaveCreate(model) == false)) return View(model);
+            var isRecipe = IsRecipe(model);
+            if (isRecipe != null)
+            {
+                return RedirectToAction("Create", new { id = model.RecipeId, isRecipe });
+            }   
+            else return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateAndExit(IngredientCreate model)
+        {
+            if ((!ModelState.IsValid) ||
+                (SaveCreate(model) == false)) return View(model);
+            var isRecipe = IsRecipe(model);
+            if (isRecipe != null)
+            {
+                return RedirectToAction("Create", "Action", new { id = model.RecipeId, isRecipe });
+            }
+            else 
+            {
+                ModelState.AddModelError("", "Internal Error");
+                return View(model); 
+            }
+        }
+
+        private bool? IsRecipe(IngredientCreate model)
+        {
+            if (model.RecipeId != null && model.LarderId != null)
+            {
+                return null;
+            }
+            else if (model.RecipeId == null && model.LarderId == null)
+            {
+                
+                return null;
+            }
+            else if (model.RecipeId != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool SaveCreate(IngredientCreate model)
+        {
             var service = CreateIngredientService();
             if (service.CreateIngredient(model))
             {
                 TempData["SaveResult"] = "Your ingredient was created.";
-                return RedirectToAction("Index");
+                return true;
             }
             else
             {
                 ModelState.AddModelError("", "Ingredient could not be created.");
-                return View(model);
+                return false;
             }
         }
 

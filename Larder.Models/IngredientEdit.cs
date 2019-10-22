@@ -9,6 +9,8 @@ namespace Larder.Models.Ingredient
 {
     public class IngredientEdit : FoodEdit
     {
+        public int? RecipeId { get; set; }
+        public int? LarderId { get; set; }
         public decimal? Amount { get; set; }
         public Unit? Unit { get; set; }
     }

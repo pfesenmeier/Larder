@@ -8,6 +8,9 @@ namespace Larder.Models
 {
     public class ActionCreate
     {
+        public int ID { get; set; }
         public string Description { get; set; }
+        public int? RecipeID { get; set; }
+        public int? LarderId { get; set; }
     }
 }

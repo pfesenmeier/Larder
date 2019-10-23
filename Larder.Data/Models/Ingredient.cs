@@ -10,8 +10,7 @@ namespace Larder.Data.Models
     public class Ingredient : Food
     {
         //IDs
-        public int? RecipeId { get; set; }
-        public int? LarderId { get; set; }
+        public int LarderId { get; set; }
         public int? LarderTemplateId { get; set; }
 
         //Properties

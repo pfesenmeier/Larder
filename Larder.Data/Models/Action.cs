@@ -11,8 +11,7 @@ namespace Larder.Data.Models
         //Keys
         public int ID { get; set; }
         public Guid AuthorID { get; set; }
-        public int? RecipeID { get; set; }
-        public int? LarderId { get; set; }
+        public int LarderId { get; set; }
         //Property
         public string Description { get; set; }
 

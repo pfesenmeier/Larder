@@ -26,12 +26,9 @@ namespace Larder.Services
                 Description = model.Description,
                 DateCreated = DateTimeOffset.UtcNow,
                 Amount = model.Amount,
-                Unit = model.Unit
+                Unit = model.Unit,
+                LarderId = model.LarderId
             };
-            if (model.RecipeId == null && model.LarderId == null) return false;
-            if (model.RecipeId != null && model.LarderId != null) return false;
-            if (model.RecipeId != null) entity.RecipeId = model.RecipeId;
-            if (model.LarderId != null) entity.LarderId = model.LarderId;
             using (var context = new CookbookContext())
             {
                 context.Ingredients.Add(entity);

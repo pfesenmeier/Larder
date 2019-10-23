@@ -24,17 +24,10 @@ namespace Larder.Controllers
 
         // GET /Ingredient/Create
         // Display CreateView for first, and...
-        public ActionResult Create(int id, bool isRecipe)
+        public ActionResult Create(int id)
         {
             var model = new IngredientCreate();
-            if (isRecipe)
-            {
-                model.RecipeId = id;
-            }
-            else
-            {
-                model.LarderId = id;
-            }
+            model.LarderId = id;
 
             return View(model);
         }
@@ -45,20 +38,8 @@ namespace Larder.Controllers
         {
             if ((!ModelState.IsValid) ||
                 (SaveCreate(model) == false)) return View(model);
-            var isRecipe = IsRecipe(model);
-            if (isRecipe == true)
-            {
-                return RedirectToAction("Create", new { id = model.RecipeId, isRecipe });
-            }
-            else if (isRecipe == false)
-            {
-                return RedirectToAction("Create", new { id = model.LarderId, isRecipe });
-            }
-            else
-            {
-                return View(model);
-            }
             
+            return RedirectToAction("Create", new { id = model.LarderId });
         }
 
         public ActionResult CreateFromTemplate(int recipeid)
@@ -78,28 +59,8 @@ namespace Larder.Controllers
         {
             if ((!ModelState.IsValid) ||
                 (SaveCreate(model) == false)) return View(model);
-            return RedirectToAction("CreateFromTemplate");
-        }
 
-        private bool? IsRecipe(IngredientCreate model)
-        {
-            if (model.RecipeId != null && model.LarderId != null)
-            {
-                return null;
-            }
-            else if (model.RecipeId == null && model.LarderId == null)
-            {
-                
-                return null;
-            }
-            else if (model.RecipeId != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return RedirectToAction("CreateFromTemplate");
         }
 
         private bool SaveCreate(IngredientCreate model)

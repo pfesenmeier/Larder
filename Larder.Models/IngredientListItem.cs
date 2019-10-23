@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Larder.Models.Ingredient
+namespace Larder.Models
 {
     public class IngredientListItem : FoodListItem
     {

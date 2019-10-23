@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Larder.Models.Plating
 {
-    class PlatingDetail
+    public class PlatingDetail
     {
+        public int RecipeId { get; set; }
     }
 }

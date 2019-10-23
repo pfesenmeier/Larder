@@ -1,5 +1,4 @@
 ﻿using Larder.Models;
-using Larder.Models.Ingredient;
 using Larder.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -47,7 +46,7 @@ namespace Larder.Controllers
             var LarderList = GetLarderList();
             var model = new IngredientCreateFromTemplate()
             {
-                RecipeId = recipeid,
+                LarderId = recipeid,
                 Templates = LarderList
             };
             return View(model);

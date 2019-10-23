@@ -1,7 +1,6 @@
 ﻿using Larder.Data.DAL;
 using Larder.Data.Models;
 using Larder.Models;
-using Larder.Models.Ingredient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,7 +81,7 @@ namespace Larder.Services
                 var ingredients =
                           context
                                  .Ingredients
-                                 .Where(i => i.AuthorID == userId && i.RecipeId == id)
+                                 .Where(i => i.AuthorID == userId && i.LarderId == id)
                                  .Select(
                                      i =>
                                          new IngredientListItem
@@ -97,7 +96,7 @@ namespace Larder.Services
                 var actions =
                       context
                              .Actions
-                             .Where(a => a.AuthorID == userId && a.RecipeId == id)
+                             .Where(a => a.AuthorID == userId && a.LarderId == id)
                              .Select(
                                  a =>
                                      new ActionListItem

@@ -11,7 +11,7 @@ namespace Larder.Data.Models
     {
         //IDs
         public int LarderId { get; set; }
-        public int? LarderTemplateId { get; set; }
+        public int? TemplateId { get; set; }
 
         //Properties
         [Column(TypeName = "decimal")]

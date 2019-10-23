@@ -1,5 +1,4 @@
 ﻿using Larder.Data.Models;
-using Larder.Models.Ingredient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Larder.Models
 {
-    public class IngredientCreateFromTemplate : FoodCreate
+    public class IngredientCreateFromTemplate : IngredientCreate
     {
+        public int TemplateId { get; set; }
         public List<LarderListItem> Templates { get; set; }
-        public int RecipeId { get; set; }
-        public decimal? Amount { get; set; }
-        public Unit? Unit { get; set; }
+
+        //Its LarderId should be just be recipeid's, but that logic shoubl be handled elsewhere.
     }
 }

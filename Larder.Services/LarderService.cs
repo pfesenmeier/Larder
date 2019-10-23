@@ -6,8 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Larder.Data.DAL;
-using Larder.Models.Ingredient;
-
 namespace Larder.Services
 {
     public class LarderService

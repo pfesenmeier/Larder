@@ -1,6 +1,6 @@
 ﻿using Larder.Data.DAL;
 using Larder.Data.Models;
-using Larder.Models.Ingredient;
+using Larder.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +27,30 @@ namespace Larder.Services
                 DateCreated = DateTimeOffset.UtcNow,
                 Amount = model.Amount,
                 Unit = model.Unit,
-                LarderId = model.LarderId
+                LarderId = model.LarderId,
             };
+
+            using (var context = new CookbookContext())
+            {
+                context.Ingredients.Add(entity);
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        public bool CreateIngredientFromTemplate(IngredientCreateFromTemplate model)
+        {
+            var entity = new Ingredient()
+            {
+                AuthorID = userId,
+                Name = model.Name,
+                Description = model.Description,
+                DateCreated = DateTimeOffset.UtcNow,
+                Amount = model.Amount,
+                Unit = model.Unit,
+                LarderId = model.LarderId,
+                TemplateId = model.TemplateId
+            };
+
             using (var context = new CookbookContext())
             {
                 context.Ingredients.Add(entity);

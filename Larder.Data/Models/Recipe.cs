@@ -13,7 +13,5 @@ namespace Larder.Data.Models
         //Navigation Properties
         [DisplayName("Plating Styles")]
         public virtual ICollection<RecipePlating> RecipePlatings { get; set; }
-        [DisplayName("Ingredients from Larder")]
-        public virtual ICollection<LarderModel> Larders { get; set; }
     }
 }

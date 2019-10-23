@@ -1,4 +1,5 @@
-﻿using Larder.Models.Ingredient;
+﻿using Larder.Models;
+using Larder.Models.Ingredient;
 using Larder.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -7,11 +8,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-// Modify 'Post Create' Route to go back to recipe screen
-    // /Recipe/Edit/id=1 something
-// Stretch: Modify 'Post Create' Route to go to new create route if button press
-
-// Amount not required- check view
 namespace Larder.Controllers
 {
     [Authorize]  
@@ -58,25 +54,31 @@ namespace Larder.Controllers
             {
                 return RedirectToAction("Create", new { id = model.LarderId, isRecipe });
             }
-            else return View();
+            else
+            {
+                return View(model);
+            }
+            
+        }
+
+        public ActionResult CreateFromTemplate(int recipeid)
+        {
+            var LarderList = GetLarderList();
+            var model = new IngredientCreateFromTemplate()
+            {
+                RecipeId = recipeid,
+                Templates = LarderList
+            };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAndExit(IngredientCreate model)
+        public ActionResult CreateFromTemplate(IngredientCreateFromTemplate model)
         {
             if ((!ModelState.IsValid) ||
                 (SaveCreate(model) == false)) return View(model);
-            var isRecipe = IsRecipe(model);
-            if (isRecipe != null)
-            {
-                return RedirectToAction("Create", "Action", new { id = model.RecipeId, isRecipe });
-            }
-            else 
-            {
-                ModelState.AddModelError("", "Internal Error");
-                return View(model); 
-            }
+            return RedirectToAction("CreateFromTemplate");
         }
 
         private bool? IsRecipe(IngredientCreate model)
@@ -186,6 +188,13 @@ namespace Larder.Controllers
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             return new IngredientService(userId);
+        }
+
+        private List<LarderListItem> GetLarderList()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new LarderService(userId);
+            return service.GetLarders().ToList();
         }
     }
 }

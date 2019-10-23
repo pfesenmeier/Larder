@@ -13,5 +13,9 @@ namespace Larder.Models.Ingredient
         public int? LarderId { get; set; }
         public decimal? Amount { get; set; }
         public Unit? Unit { get; set; }
+        public override string ToString()
+        {
+            return $"{Amount} {Unit} {Name}";
+        }
     }
 }

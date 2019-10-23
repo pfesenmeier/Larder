@@ -93,6 +93,7 @@
     <Compile Include="FoodEdit.cs" />
     <Compile Include="FoodListItem.cs" />
     <Compile Include="IngredientCreate.cs" />
+    <Compile Include="IngredientCreateFromTemplate.cs" />
     <Compile Include="IngredientDetail.cs" />
     <Compile Include="IngredientEdit.cs" />
     <Compile Include="IngredientListItem.cs" />

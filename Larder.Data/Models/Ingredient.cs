@@ -12,6 +12,7 @@ namespace Larder.Data.Models
         //IDs
         public int? RecipeId { get; set; }
         public int? LarderId { get; set; }
+        public int? LarderTemplateId { get; set; }
 
         //Properties
         [Column(TypeName = "decimal")]

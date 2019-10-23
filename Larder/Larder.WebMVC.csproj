@@ -297,6 +297,8 @@
     <Content Include="Views\Action\Delete.cshtml" />
     <Content Include="Views\Larder\Index.cshtml" />
     <Content Include="Views\Larder\Create.cshtml" />
+    <Content Include="Views\Larder\Details.cshtml" />
+    <Content Include="Views\Ingredient\CreateFromTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

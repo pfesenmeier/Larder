@@ -12,6 +12,12 @@ namespace Larder.Controllers
     [Authorize]
     public class LarderController : Controller
     {
+        //service = CreateLarderService()
+        //model = service.GetLarders();
+           //       service.CreateLarder(model)
+         //         servie.GetLarderById
+
+
         // GET: Larder
         public ActionResult Index()
         {
@@ -43,6 +49,14 @@ namespace Larder.Controllers
                 ModelState.AddModelError("", "Larder recipe could not be created.");
                 return View(model);
             }
+        }
+
+        public ActionResult Details(int id)
+        {
+            var service = CreateLarderService();
+            var model = service.GetLarderbyId(id);
+
+            return View(model);
         }
 
         private LarderService CreateLarderService()

@@ -120,25 +120,44 @@ namespace Larder.Services
             }
         }
 
-        public int GetIdbyName(string name)
+        public List<RecipeListItem> GetRecipesByPlatingId(int id)
+        {
+
+            using (var context = new CookbookContext())
+            {
+              return context
+                            .Recipes
+                            .Where(x => x.RecipePlatings.Any(rp => rp.PlatingID == id))
+                            .Select(
+                                r =>
+                                    new RecipeListItem()
+                                    {
+                                        ID = r.ID,
+                                        Name = r.Name
+                                    })
+                            .ToList();
+            }
+        }
+
+    public int GetIdbyName(string name)
         {
             using (var context = new CookbookContext())
             {
                 var entity =
                      context
-                            .Larders
+                            .Recipes
                             .Single(e => e.Name == name && e.AuthorID == userId);
                 return entity.ID;
             }
         }
 
-        public bool UpdateLarder(LarderEdit model)
+        public bool UpdateRecipe(RecipeEdit model)
         {
             using (var context = new CookbookContext())
             {
                 var entity =
                     context
-                           .Larders
+                           .Recipes
                            .Single(e => e.ID == model.ID && e.AuthorID == userId);
                 entity.Name = model.Name;
                 entity.Description = model.Description;
@@ -148,15 +167,15 @@ namespace Larder.Services
             }
         }
 
-        public bool DeleteLarder(int id)
+        public bool DeleteRecipe(int id)
         {
             using (var context = new CookbookContext())
             {
                 var entity =
                     context
-                           .Larders
+                           .Recipes
                            .Single(e => e.ID == id && e.AuthorID == userId);
-                context.Larders.Remove(entity);
+                context.Recipes.Remove(entity);
 
                 return context.SaveChanges() == 1;
             }

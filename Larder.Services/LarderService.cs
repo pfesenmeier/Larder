@@ -54,7 +54,9 @@ namespace Larder.Services
                 var query =
                     context
                            .Larders
+                           .OfType<LarderModel>()
                            .Where(e => e.AuthorID == userId)
+                           .Where(e => !(e is Recipe))
                            .Select(
                                e =>
                                    new LarderListItem

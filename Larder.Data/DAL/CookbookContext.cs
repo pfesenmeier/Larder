@@ -24,5 +24,7 @@ namespace Larder.Data.DAL
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Season> Seasons { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Plating> Platings { get; set; }
+        public DbSet<RecipePlating> RecipePlatings { get; set; }
     }
 }

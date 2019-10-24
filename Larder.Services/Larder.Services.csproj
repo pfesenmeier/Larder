@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionService.cs" />
+    <Compile Include="PlatingService.cs" />
     <Compile Include="IngredientService.cs" />
     <Compile Include="LarderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Larder.Models.Plating
+namespace Larder.Models
 {
-    public class PlatingListItem
+    public class PlatingListItem : FoodListItem
     {
         public int RecipeId { get; set; }
     }

@@ -17,6 +17,30 @@ namespace Larder.Services
             this.userId = userId;
         }
 
+        public bool AddPlating(PlatingAdd model)
+        {
+            using(var context = new CookbookContext())
+            {
+                var recipe =
+                     context.Recipes.Single(r => r.ID == model.RecipeId);
+                recipe.RecipePlatings = null;
+                foreach (var plating in model.Platings)
+                {
+
+                    if (plating.Value == true)
+                    {
+                        recipe.RecipePlatings.Add(
+                                        new RecipePlating()
+                                        {
+                                            PlatingID = plating.Key.ID,
+                                            RecipeID = model.RecipeId
+                                        }); 
+                    }
+                }
+                return context.SaveChanges() == 1;
+            }
+        }
+
         public bool CreatePlating(PlatingCreate model)
         {
             var entity = new Plating()
@@ -55,56 +79,16 @@ namespace Larder.Services
             }
         }
         
-        public PlatingDetail GetPlatingbyId(int platingid)
+        public PlatingDetail GetPlatingsbyRecipeId(int platingid)
         {
             using (var context = new CookbookContext())
             {
-                List<int> RecipeIds =
-                        context
-                               .RecipePlatings
-                               .Where(pr => pr.PlatingID == platingid)
-                               .Select(pr => pr.RecipeID)
-                               .Distinct()
-                               .ToList();
+                var entity =
+                    context
+                           .Platings
+                           .Single(e => e.ID == platingid && e.AuthorID == userId);
                 var service = new RecipeService(userId);
-                List<RecipeListItem> Recipes = service.GetRecipeByPlatingId(platingid);
-                foreach( var id in RecipeIds)
-                {
-                    var Recipe =
-                                  context
-                                         .Recipes
-                                         .Where(r => r.ID == id)
-                                         .Select(
-                                             r =>
-                                                 new RecipeListItem
-                                                 {
-                                                     ID = r.ID,
-                                                     Name = r.Name
-                                                 }
-                                          );
-                    Recipes.Add(Recipe);
-                }
-                //var entity =
-                //    context
-                //           .Platings
-                //           .Single(e => e.ID == id && e.AuthorID == userId);
-                //var recipeids =
-                //            context
-                //                   .RecipePlatings
-                //                   .Where(r => r.PlatingID == entity.ID)
-                //                   .Select(
-                //                       r =>
-                //                           new RecipeListItem
-                //                           {
-                //                               ID = r.RecipeID
-                //                           }
-                //                   );
-                //var recipes =
-                //            context
-                //                   .Recipes
-                //                   .Where(r => r.ID == entity.ID)
-
-
+                List<RecipeListItem> Recipes = service.GetRecipesByPlatingId(platingid);
 
                 return
                     new PlatingDetail
@@ -114,6 +98,7 @@ namespace Larder.Services
                         Description = entity.Description,
                         DateCreated = entity.DateCreated,
                         DateModified = entity.DateModified,
+                        Recipes = Recipes
                     };
             }
         }
@@ -128,8 +113,6 @@ namespace Larder.Services
                            .Single(e => e.ID == model.ID && e.AuthorID == userId);
                 entity.Name = model.Name;
                 entity.Description = model.Description;
-                entity.Amount = model.Amount;
-                entity.Unit = model.Unit;
                 entity.DateModified = DateTimeOffset.UtcNow;
 
                 return context.SaveChanges() == 1;
@@ -149,6 +132,7 @@ namespace Larder.Services
                 return context.SaveChanges() == 1;
             }
         }
+
 
 
     }

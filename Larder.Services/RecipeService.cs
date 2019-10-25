@@ -105,6 +105,8 @@ namespace Larder.Services
                                          Description = a.Description
                                      }
                           );
+                var platings = GetPlatingsByRecipeId(id);
+
                 return
                     new RecipeDetail
                     {
@@ -115,7 +117,8 @@ namespace Larder.Services
                         Actions = actions.ToList(),
                         Seasons = entity.Season.GetSeasons(),
                         DateCreated = entity.DateCreated,
-                        DateModified = entity.DateModified
+                        DateModified = entity.DateModified,
+                        Platings = platings
                     };
             }
         }
@@ -139,15 +142,22 @@ namespace Larder.Services
             }
         }
 
-    public int GetIdbyName(string name)
+        public List<PlatingListItem> GetPlatingsByRecipeId(int id)
         {
+
             using (var context = new CookbookContext())
             {
-                var entity =
-                     context
-                            .Recipes
-                            .Single(e => e.Name == name && e.AuthorID == userId);
-                return entity.ID;
+                return context
+                              .Platings
+                              .Where(x => x.RecipePlatings.Any(rp => rp.PlatingID == id))
+                              .Select(
+                                  p =>
+                                      new PlatingListItem()
+                                      {
+                                          ID = p.ID,
+                                          Name = p.Name
+                                      })
+                              .ToList();
             }
         }
 

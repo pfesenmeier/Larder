@@ -8,5 +8,6 @@ namespace Larder.Models
 {
     public class RecipeListItem : LarderListItem
     {
+        public List<PlatingListItem> Platings { get; set; }
     }
 }

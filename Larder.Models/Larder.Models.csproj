@@ -104,6 +104,7 @@
     <Compile Include="LarderDetail.cs" />
     <Compile Include="LarderEdit.cs" />
     <Compile Include="LarderListItem.cs" />
+    <Compile Include="PlatingAdd.cs" />
     <Compile Include="PlatingCreate.cs" />
     <Compile Include="PlatingDetail.cs" />
     <Compile Include="PlatingEdit.cs" />

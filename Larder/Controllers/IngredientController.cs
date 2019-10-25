@@ -144,17 +144,17 @@ namespace Larder.Controllers
             return RedirectToAction("Index");
         }
 
-        private IngredientService CreateIngredientService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            return new IngredientService(userId);
-        }
 
         private List<LarderListItem> GetLarderList()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new LarderService(userId);
             return service.GetLarders().ToList();
+        }
+        private IngredientService CreateIngredientService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            return new IngredientService(userId);
         }
     }
 }

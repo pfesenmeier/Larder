@@ -10,5 +10,7 @@ namespace Larder.Models
     public class LarderEdit : FoodEdit
     {
         public Season Season { get; set; }
+        public List<IngredientListItem> Ingredients { get; set; }
+        public List<ActionListItem> Actions { get; set; }
     }
 }

@@ -106,6 +106,20 @@ namespace Larder.Services
                                          Description = a.Description
                                      }
                           );
+                var recipes =
+                      context
+                             .Recipes
+                             .Where(r => r.AuthorID == userId)
+                             .Where(r => r.Ingredients.Any(i => i.TemplateId == id))
+                             .Select(
+                                 r =>
+                                     new RecipeListItem
+                                     {
+                                         ID = r.ID,
+                                         Name = r.Name
+                                     }
+                              )
+                             .ToList();
                 return
                     new LarderDetail
                     {
@@ -116,20 +130,9 @@ namespace Larder.Services
                         Actions = actions.ToList(),
                         Seasons = entity.Season.GetSeasons(),
                         DateCreated = entity.DateCreated,
-                        DateModified = entity.DateModified
+                        DateModified = entity.DateModified,
+                        Recipes = recipes
                     };
-            }
-        }
-
-        public int GetIdbyName(string name)
-        {
-            using (var context = new CookbookContext())
-            {
-                var entity =
-                     context
-                            .Larders
-                            .Single(e => e.Name == name && e.AuthorID == userId);
-                return entity.ID;
             }
         }
 

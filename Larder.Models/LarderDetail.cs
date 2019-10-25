@@ -11,5 +11,6 @@ namespace Larder.Models
         public List<string> Seasons { get; set; }
         public List<IngredientListItem> Ingredients { get; set; }
         public List<ActionListItem> Actions { get; set; }
+        public List<RecipeListItem> Recipes { get; set; }
     }
 }

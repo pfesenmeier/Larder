@@ -27,22 +27,6 @@ namespace Larder.Controllers
             return View(model);
         }
 
-
-        public ActionResult AddUpdate(int id)
-        {
-            var platingDict = PlatingDictionary(id).Platings;
-            var recipeService = new RecipeService(Guid.Parse(User.Identity.GetUserId()));
-            var recipePlatings = recipeService.GetPlatingsByRecipeId(id);
-            var model = new PlatingAdd()
-            {
-                RecipeId = id,
-                Platings = platingDict
-            };
-            foreach (var platingid in model.Platings.Keys)
-            {
-                if (recipePlatings.Any(rp => rp.Id == )
-            }
-        }
         private PlatingAdd PlatingDictionary(int id)
         {
             var service = CreatePlatingService();
@@ -57,6 +41,51 @@ namespace Larder.Controllers
             }
             return model;
         }
+
+        public ActionResult AddUpdate(int id)
+        {
+            var recipeService = new RecipeService(Guid.Parse(User.Identity.GetUserId()));
+            var platings = recipeService.GetPlatingsByRecipeId(id);
+
+            var service = CreatePlatingService();
+            var allPlatings = service.GetPlatings();
+            var model = new PlatingAdd()
+            {
+                RecipeId = id
+            };
+            foreach (var plating in allPlatings)
+            {
+                if (platings.Any(p => p.ID == plating.ID))
+                {
+                    model.Platings.Add(plating, true);
+                }
+                else
+                {
+                    model.Platings.Add(plating, false);
+                }
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddUpdate(PlatingAdd model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            var service = CreatePlatingService();
+            if (service.AddPlating(model)) 
+            {
+                TempData["Save Result"] = "Changes Saved.";
+                return RedirectToAction("Edit", "Recipe", new { id = model.RecipeId });
+            }
+            else
+            {
+                ModelState.AddModelError("", "Your plating style could not be update.");
+                return View(model);
+            }
+        }
+
+        
 
         // GET /Plating/Create
         // Display CreateView for first, and...

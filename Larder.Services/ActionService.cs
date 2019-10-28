@@ -22,7 +22,8 @@ namespace Larder.Services
             var entity = new Data.Models.Action()
             {
                 AuthorID = userId,
-                Description = model.Description
+                Description = model.Description,
+                LarderId = model.LarderID
             };
             using (var context = new CookbookContext())
             {
@@ -39,6 +40,26 @@ namespace Larder.Services
                     context
                            .Actions
                            .Where(e => e.AuthorID == userId)
+                           .Select(
+                               e =>
+                                   new ActionListItem
+                                   {
+                                       ID = e.ID,
+                                       Description = e.Description
+                                   }
+                           );
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<ActionListItem> GetActionsById(int id)
+        {
+            using (var context = new CookbookContext())
+            {
+                var query =
+                    context
+                           .Actions
+                           .Where(e => e.AuthorID == userId && e.LarderId == id)
                            .Select(
                                e =>
                                    new ActionListItem

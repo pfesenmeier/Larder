@@ -20,8 +20,10 @@ namespace Larder.Controllers
             return View(model);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            var service = CreateActionService();
+            var model = service.GetActionsById(id);
             return View();
         }
 

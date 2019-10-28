@@ -74,6 +74,7 @@ namespace Larder.Controllers
                              Ingredients = detail.Ingredients
                          };
 
+            model.Season = new Data.Models.Season();
             if (detail.Seasons.Contains("Spring")) model.Season.Spring = true;
             if (detail.Seasons.Contains("Summer")) model.Season.Summer = true;
             if (detail.Seasons.Contains("Winter")) model.Season.Winter = true;

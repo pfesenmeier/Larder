@@ -20,5 +20,8 @@ namespace Larder.Data.Models
 
         //Methods
         public override string ToString() => $"{Amount} {Unit} {Name}";
+
+        //Nav Object
+        public LarderModel Larder { get; set; }
     }
 }

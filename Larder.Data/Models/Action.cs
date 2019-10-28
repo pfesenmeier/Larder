@@ -16,6 +16,6 @@ namespace Larder.Data.Models
         public string Description { get; set; }
 
         //Navigation Object
-        public virtual Recipe Recipe { get; set; }
+        public virtual LarderModel Larder { get; set; }
     }
 }

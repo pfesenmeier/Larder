@@ -22,9 +22,11 @@ namespace Larder.Controllers
 
         public ActionResult Create(int id)
         {
-            var service = CreateActionService();
-            var model = service.GetActionsById(id);
-            return View();
+            var model = new ActionCreate()
+            {
+                LarderID = id
+            };
+            return View(model);
         }
 
         [HttpPost]
@@ -36,7 +38,7 @@ namespace Larder.Controllers
             if (service.CreateAction(model))
             {
                 TempData["SaveResult"] = "Step was created.";
-                return RedirectToAction("Index");
+                return Create(model.LarderID);
             }
             else
             {

@@ -43,7 +43,7 @@
 
 <ul class="list-group list-group-flush">
     <li class="list-group-item h5 font-weight-bold">
-        Ingredients @Html.ActionLink(" ", "Create", "Ingredient", new { id = Model.ID }, new { @class = "fas fa-plus" })
+        Ingredients @Html.ActionLink(" ", "Create", "Ingredient", new { id = Model.ID }, new { @class = "fas fa-plus float-right" })
     </li>
     @foreach (var item in Model.Ingredients)
     {
@@ -51,26 +51,28 @@
             @Html.DisplayFor(modelItem => item.Amount)
             @Html.DisplayFor(modelItem => item.Unit)
             @Html.DisplayFor(modelItem => item.Name)
-            @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit float-right" })
+            @Html.ActionLink(" ", "Delete", "Ingredient", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right"})
+            @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
         </li>
     }
 </ul>
 
 <ul class="list-group list-group-flush">
     <li class="list-group-item h5 font-weight-bold">
-        Actions @Html.ActionLink(" ", "Create", "Action", new { id = Model.ID }, new { @class = "fas fa-plus" })
+        @Html.DisplayNameFor(model => model.Actions)
+        @Html.ActionLink(" ", "Create", "Action", new { id = Model.ID }, new { @class = "fas fa-plus float-right" })
     </li>
-    <li>
-        <ol>
-            @foreach (var item in Model.Actions)
-            {
-                <li class="list-group-item">
-                    @Html.DisplayFor(modelItem => item.Description)
-                    @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit float-right" })
-                </li>
-            }
-        </ol>
-    </li>
+    @{ int i = 1;}
+    @foreach (var item in Model.Actions)
+    {
+        <li class="list-group-item">
+            @i.
+            @Html.DisplayFor(modelItem => item.Description)
+            @Html.ActionLink(" ", "Delete", "Action", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right" })
+            @Html.ActionLink(" ", "Edit", "Action", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
+        </li>
+        i++;
+    }
 </ul>
 <div>
     @Html.ActionLink("Back to List", "Index")

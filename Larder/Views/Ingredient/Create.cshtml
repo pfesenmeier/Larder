@@ -1,60 +1,46 @@
 ﻿@model Larder.Models.IngredientCreate
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add Ingredient";
 }
 
-<h2>Create</h2>
+<h1 class="display-4 mb-3">Ingredients</h1>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>IngredientCreate</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Unit, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Unit, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Unit, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-            @Html.HiddenFor(model => model.LarderId)
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add Ingredient" formaction="Create" class="btn btn-default" />
-            </div>
-        </div>
+<form>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Amount)
+        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Unit)
+        @Html.EnumDropDownListFor(model => model.Unit, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Unit, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description)
+        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+    @Html.HiddenFor(model => model.LarderId)
+    <button type="submit" value="Create" class="btn btn-primary">Create</button>
+</form>
 }
 
-<div>
-    @Html.ActionLink("Add Instructions", "Action/Create", new { LarderId = Model.LarderId })
+<div class="mt-1">
+    @Html.ActionLink("Add Instructions", "Create", "Action", new { id = Model.LarderId }, null)
 </div>
 
 @section Scripts {

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Larder.Models.FoodListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 class="display-4">Larder</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "fas fa-info-circle" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fas fa-edit" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "fas fa-trash-alt" })
+                </td>
+            </tr>
+        }
+        <tr>
+            <th>@Html.ActionLink(" ", "Create", null, new { @class = "fas fa-plus" })</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

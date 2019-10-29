@@ -4,47 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-<h1 class="display-4">Larder</h1>
+@Html.Partial("_IndexBody", Model)
 
 
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th scope="row">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </th>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Details", "Larder", new { id = item.ID }, new { @class = "fas fa-info-circle" })
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Edit", "Larder", new { id = item.ID }, new { @class = "fas fa-edit" })
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Delete", "Larder", new { id = item.ID }, new { @class = "fas fa-trash-alt" })
-                </td>
-            </tr>
-        }
-        <tr>
-            <th>@Html.ActionLink(" ", "Create", "Larder", null, new { @class = "fas fa-plus" })</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>

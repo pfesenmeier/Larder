@@ -12,17 +12,13 @@ namespace Larder.Controllers
     [Authorize]
     public class LarderController : Controller
     {
-        //service = CreateLarderService()
-        //model = service.GetLarders();
-           //       service.CreateLarder(model)
-         //         servie.GetLarderById
-
 
         // GET: Larder
         public ActionResult Index()
         {
             var service = CreateLarderService();
             var model = service.GetLarders();
+
 
             return View(model);
         }

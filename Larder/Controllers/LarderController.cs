@@ -19,7 +19,6 @@ namespace Larder.Controllers
             var service = CreateLarderService();
             var model = service.GetLarders();
 
-
             return View(model);
         }
 

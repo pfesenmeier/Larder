@@ -1,15 +1,13 @@
-﻿@model Larder.Models.RecipeDetail
+﻿@model Larder.Models.PlatingDetail
 
 @{
     ViewBag.Title = "Details";
 }
 
 @Html.Partial("_FoodDetails", Model)
-@Html.Partial("_SeasonDetail", Model.Seasons)
-@Html.Partial("_IngredientList", Model.Ingredients)
-@Html.Partial("_ActionList", Model.Actions)
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+

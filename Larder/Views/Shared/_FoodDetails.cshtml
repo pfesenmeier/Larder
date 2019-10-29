@@ -1,0 +1,41 @@
+﻿@model Larder.Models.FoodDetail
+
+<h1 class="display-4">@Html.DisplayFor(model => model.Name)</h1>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+            @if (Model.DateModified != null)
+            {
+                <div class="float-right">
+                    @Html.DisplayNameFor(model => model.DateModified)
+                </div>
+            }
+        </dt>
+
+        <dd>
+            @Model.DateCreated.Date.ToShortDateString()
+            @if (Model.DateModified != null)
+            {
+            <div class="float-right">
+                
+                @{
+                    DateTime dateModified;
+                    DateTime.TryParse(Model.DateModified.ToString(), out dateModified);
+                    @dateModified.Date.ToShortDateString();
+                }
+            </div>
+            }
+        </dd>
+        @if (Model.Description != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        }
+    </dl>
+</div>

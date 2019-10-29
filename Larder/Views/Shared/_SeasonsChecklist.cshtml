@@ -1,0 +1,21 @@
+﻿@model Larder.Models.LarderCreate
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Season)
+    <div class="form-check">
+        @Html.CheckBoxFor(model => model.Season.Summer, htmlAttributes: new { @class = "form-check-input" })
+        @Html.LabelFor(model => model.Season.Summer, htmlAttributes: new { @class = "form-check-label" })
+    </div>
+    <div class="form-check">
+        @Html.CheckBoxFor(model => model.Season.Fall, htmlAttributes: new { @class = "form-check-input" })
+        @Html.LabelFor(model => model.Season.Fall, htmlAttributes: new { @class = "form-check-label" })
+    </div>
+    <div class="form-check">
+        @Html.CheckBoxFor(model => model.Season.Winter, htmlAttributes: new { @class = "form-check-input" })
+        @Html.LabelFor(model => model.Season.Winter, htmlAttributes: new { @class = "form-check-label" })
+    </div>
+    <div class="form-check">
+        @Html.CheckBoxFor(model => model.Season.Spring, htmlAttributes: new { @class = "form-check-input" })
+        @Html.LabelFor(model => model.Season.Spring, htmlAttributes: new { @class = "form-check-label" })
+    </div>
+</div>

@@ -347,11 +347,18 @@
     <Content Include="Views\Shared\_IndexBody.cshtml" />
     <Content Include="Views\Larder\Edit.cshtml" />
     <Content Include="Views\Larder\Delete.cshtml" />
+    <Content Include="Views\Plating\Index.cshtml" />
+    <Content Include="Views\Shared\_FoodDetails.cshtml" />
+    <Content Include="Views\Shared\_SeasonDetail.cshtml" />
+    <Content Include="Views\Shared\_IngredientList.cshtml" />
+    <Content Include="Views\Shared\_ActionList.cshtml" />
+    <Content Include="Views\Plating\Details.cshtml" />
+    <Content Include="Views\Shared\_FoodCreate.cshtml" />
+    <Content Include="Views\Shared\_SeasonsChecklist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Food\" />
-    <Folder Include="Views\Plating\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

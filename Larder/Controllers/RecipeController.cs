@@ -62,7 +62,8 @@ namespace Larder.Controllers
                              Name = detail.Name,
                              Description = detail.Description,
                              Actions = detail.Actions,
-                             Ingredients = detail.Ingredients
+                             Ingredients = detail.Ingredients,
+                             Season = new Data.Models.Season()
                          };
 
             if (detail.Seasons.Contains("Spring")) model.Season.Spring = true;

@@ -355,6 +355,9 @@
     <Content Include="Views\Plating\Details.cshtml" />
     <Content Include="Views\Shared\_FoodCreate.cshtml" />
     <Content Include="Views\Shared\_SeasonsChecklist.cshtml" />
+    <Content Include="Views\Shared\_IngredientCreate.cshtml" />
+    <Content Include="Views\Plating\Add.cshtml" />
+    <Content Include="Views\Plating\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

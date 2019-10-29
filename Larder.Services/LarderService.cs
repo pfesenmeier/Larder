@@ -103,7 +103,8 @@ namespace Larder.Services
                                      new ActionListItem
                                      {
                                          ID = a.ID,
-                                         Description = a.Description
+                                         Description = a.Description,
+                                         LarderId = a.LarderId
                                      }
                           );
                 var recipes =

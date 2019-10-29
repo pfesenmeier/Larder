@@ -4,76 +4,28 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h1 class="display-4">Edit</h1>
 
-@using (Html.BeginForm())
-{
+<form class="form mb-3">
     @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+    @Html.Partial("_FoodCreate", Model)
+    <button type="submit" value="Save" class="btn btn-primary">Submit</button>
+</form>
 
-    <div class="form-horizontal">
-        <h4>LarderEdit</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
 
 <ul class="list-group list-group-flush">
     <li class="list-group-item h5 font-weight-bold">
         Ingredients @Html.ActionLink(" ", "Create", "Ingredient", new { id = Model.ID }, new { @class = "fas fa-plus float-right" })
     </li>
-    @foreach (var item in Model.Ingredients)
-    {
-        <li class="list-group-item">
-            @Html.DisplayFor(modelItem => item.Amount)
-            @Html.DisplayFor(modelItem => item.Unit)
-            @Html.DisplayFor(modelItem => item.Name)
-            @Html.ActionLink(" ", "Delete", "Ingredient", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right"})
-            @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
-        </li>
-    }
+    @Html.Partial("_IngredientList", Model.Ingredients)
+
 </ul>
 
-<ul class="list-group list-group-flush">
-    <li class="list-group-item h5 font-weight-bold">
-        @Html.DisplayNameFor(model => model.Actions)
-        @Html.ActionLink(" ", "Create", "Action", new { id = Model.ID }, new { @class = "fas fa-plus float-right" })
-    </li>
-    @{ int i = 1;}
-    @foreach (var item in Model.Actions)
-    {
-        <li class="list-group-item">
-            @i.
-            @Html.DisplayFor(modelItem => item.Description)
-            @Html.ActionLink(" ", "Delete", "Action", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right" })
-            @Html.ActionLink(" ", "Edit", "Action", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
-        </li>
-        i++;
-    }
-</ul>
+@Html.Partial("_ActionList",Model.Actions)
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

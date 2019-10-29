@@ -65,7 +65,8 @@ namespace Larder.Services
                                    new ActionListItem
                                    {
                                        ID = e.ID,
-                                       Description = e.Description
+                                       Description = e.Description,
+                                       LarderId = id
                                    }
                            );
                 return query.ToArray();

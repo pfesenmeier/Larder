@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<Larder.Models.IngredientListItem>
 
-<div>
-    @if (Model.Count() != 0)
+@if (Model.Count() != 0)
+{
+    foreach (var item in Model)
     {
-        <label for="Ingredients" class="font-weight-bold">
-            Ingredients
-        </label>
-        <ul id="Ingredients" class="list-group list-group-flush mb-3">
-            @foreach (var ingredient in Model)
-            {
-                <li class="list-group-item">@ingredient.ToString()</li>
-            }
-        </ul>
+        <li class="list-group-item">
+            @Html.DisplayFor(modelItem => item.Amount)
+            @Html.DisplayFor(modelItem => item.Unit)
+            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(" ", "Delete", "Ingredient", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right" })
+            @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
+        </li>
     }
-</div>
+
+
+}

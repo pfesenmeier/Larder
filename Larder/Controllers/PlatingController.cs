@@ -33,7 +33,8 @@ namespace Larder.Controllers
             var platings = service.GetPlatings();
             var model = new PlatingAdd()
             {
-                RecipeId = id
+                RecipeId = id,
+                Platings = new Dictionary<PlatingListItem, bool>()
             };
             foreach (var plating in platings)
             {
@@ -89,12 +90,9 @@ namespace Larder.Controllers
 
         // GET /Plating/Create
         // Display CreateView for first, and...
-        public ActionResult Create(int id)
+        public ActionResult Create()
         {
-            var model = new PlatingCreate();
-            model.RecipeId = id;
-
-            return View(model);
+            return View();
         }
         // POST /Plating/Create
         [HttpPost]
@@ -104,7 +102,7 @@ namespace Larder.Controllers
             if ((!ModelState.IsValid) ||
                 (SaveCreate(model) == false)) return View(model);
 
-            return RedirectToAction("CreateFromTemplate","Ingredient", new { recipeid = model.RecipeId });
+            return RedirectToAction("Index");
         }
 
         private bool SaveCreate(PlatingCreate model)

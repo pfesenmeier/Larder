@@ -8,6 +8,18 @@
 @Html.Partial("_SeasonDetail", Model.Seasons)
 @Html.Partial("_IngredientList", Model.Ingredients)
 @Html.Partial("_ActionList", Model.Actions)
+    <div>
+        @if (Model.Platings.Count() != 0)
+        {
+            <label class="font-weight-bold" for="#Actions">Platings</label>
+            <ul class="list-group list-group-flush" id="Actions">
+                @foreach (var plating in Model.Platings)
+                {
+                    <li class="list-group-item">@plating.ToString()</li>
+                }
+            </ul>
+        }
+    </div>
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

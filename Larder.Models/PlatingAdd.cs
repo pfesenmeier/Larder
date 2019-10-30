@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Larder.Models
 {
-    public class PlatingAdd
+    public class PlatingAdd : PlatingListItem
     {
-        public int RecipeId { get; set; }
-        public Dictionary<PlatingListItem, bool> Platings { get; set; }
+        public bool IsIncluded { get; set; }
     }
 }

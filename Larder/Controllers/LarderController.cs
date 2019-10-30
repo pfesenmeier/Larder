@@ -65,8 +65,16 @@ namespace Larder.Controllers
                              ID = detail.ID,
                              Name = detail.Name,
                              Description = detail.Description,
-                             Actions = detail.Actions,
-                             Ingredients = detail.Ingredients
+                             Actions = new ActionList() 
+                                       {
+                                            LarderId = detail.ID,
+                                            Directions = detail.Actions.Directions 
+                                       },
+                             Ingredients = new IngredientList() 
+                                           { 
+                                                LarderId = detail.ID, 
+                                                Ingredients = detail.Ingredients.Ingredients 
+                                           }
                          };
 
             model.Season = new Data.Models.Season();

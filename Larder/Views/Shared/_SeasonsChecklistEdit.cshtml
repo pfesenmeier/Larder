@@ -1,0 +1,26 @@
+﻿@model Larder.Models.LarderEdit
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Season, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-check">
+        @Html.CheckBoxFor(model => model.Season.Summer)
+        @Html.HiddenFor(model => model.Season.Summer)
+        Summer
+    </div>
+    <div class="form-check">
+        @Html.CheckBoxFor(model => model.Season.Fall)
+        @Html.HiddenFor(model => model.Season.Fall)
+        Fall
+    </div>
+    <div class="form-check">
+        @Html.CheckBoxFor(model => model.Season.Winter)
+        @Html.HiddenFor(model => model.Season.Winter)
+        Winter
+    </div>
+    <div class="form-check">
+        @Html.CheckBoxFor(model => model.Season.Spring)
+        @Html.HiddenFor(model => model.Season.Spring)
+        Spring
+    </div>
+    @Html.ValidationMessageFor(model => model.Season, "", new { @class = "text-danger" })
+</div>

@@ -92,7 +92,7 @@ namespace Larder.Services
                                              Name = i.Name,
                                              Description = i.Description
                                          }
-                              );
+                              ).ToList();
                 var actions =
                       context
                              .Actions
@@ -104,7 +104,7 @@ namespace Larder.Services
                                          ID = a.ID,
                                          Description = a.Description
                                      }
-                          );
+                          ).ToList();
                 var platings = GetPlatingsByRecipeId(id);
 
                 return
@@ -113,8 +113,8 @@ namespace Larder.Services
                         ID = entity.ID,
                         Name = entity.Name,
                         Description = entity.Description,
-                        Ingredients = ingredients.ToList(),
-                        Actions = actions.ToList(),
+                        Ingredients = new IngredientList { LarderId=entity.ID, Ingredients = ingredients },
+                        Actions = new ActionList { LarderId=entity.ID, Directions = actions },
                         Seasons = entity.Season.GetSeasons(),
                         DateCreated = entity.DateCreated,
                         DateModified = entity.DateModified,
@@ -149,7 +149,7 @@ namespace Larder.Services
             {
                 return context
                               .Platings
-                              .Where(x => x.RecipePlatings.Any(rp => rp.PlatingID == id))
+                              .Where(x => x.RecipePlatings.Any(rp => rp.RecipeID == id))
                               .Select(
                                   p =>
                                       new PlatingListItem()
@@ -172,8 +172,12 @@ namespace Larder.Services
                 entity.Name = model.Name;
                 entity.Description = model.Description;
                 entity.DateModified = DateTimeOffset.UtcNow;
+                if (model.Season.Fall) { entity.Season.Fall = true;} else { entity.Season.Fall = false; }
+                if (model.Season.Spring) { entity.Season.Spring = true;} else { entity.Season.Spring = false; }
+                if (model.Season.Summer) { entity.Season.Summer = true;} else { entity.Season.Summer = false; }
+                if (model.Season.Winter) { entity.Season.Winter = true;} else { entity.Season.Winter = false; }
 
-                return context.SaveChanges() == 1;
+                return context.SaveChanges() != 0;
             }
         }
 

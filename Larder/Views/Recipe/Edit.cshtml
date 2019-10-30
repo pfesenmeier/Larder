@@ -1,20 +1,21 @@
-﻿@model Larder.Models.LarderEdit
-
+﻿@model Larder.Models.RecipeEdit
 @{
     ViewBag.Title = "Edit";
 }
 
 <h1 class="display-4">Edit</h1>
 
-<form class="form mb-3">
+@using (@Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.ID)
     @Html.Partial("_FoodCreate", Model)
     @Html.Partial("_SeasonsChecklistEdit", Model)
+    @Html.ValidationMessageFor(model => model.Season, "", new { @class = "text-danger" })
     <button type="submit" value="Edit" class="btn btn-primary">Submit</button>
-</form>
+}
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Recipes", "Index")
 </div>

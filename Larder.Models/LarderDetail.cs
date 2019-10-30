@@ -11,9 +11,9 @@ namespace Larder.Models
     {
         [Display(Name="Season")]
         public List<string> Seasons { get; set; }
-        public List<IngredientListItem> Ingredients { get; set; }
+        public IngredientList Ingredients { get; set; }
         [Display(Name="Directions")]
-        public List<ActionListItem> Actions { get; set; }
+        public ActionList Actions { get; set; }
         public List<RecipeListItem> Recipes { get; set; }
     }
 }

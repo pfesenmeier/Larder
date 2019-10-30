@@ -6,20 +6,29 @@
 
 @Html.Partial("_FoodDetails", Model)
 @Html.Partial("_SeasonDetail", Model.Seasons)
+<ul class="list-group list-group-flush">
+    <li  class="h5 list-group-item font-weight-bold">
+        @Html.ActionLink(" ","CreateFromTemplate", "Ingredient", new { recipeid = Model.ID }, new { @class ="fas fa-mortar-pestle float-right"})
+    </li>
+</ul>
 @Html.Partial("_IngredientList", Model.Ingredients)
 @Html.Partial("_ActionList", Model.Actions)
-    <div>
-        @if (Model.Platings.Count() != 0)
+<ul class="list-group list-group-flush">
+    <li class="list-group-item h5 font-weight-bold">
+        Platings @Html.ActionLink(" ", "AddUpdate", "Plating", new { id = Model.ID }, new { @class = "fas fa-edit float-right" })
+    </li>
+    @if (Model.Platings.Count() != 0)
+    {
+        foreach (var plating in Model.Platings)
         {
-            <label class="font-weight-bold" for="#Actions">Platings</label>
-            <ul class="list-group list-group-flush" id="Actions">
-                @foreach (var plating in Model.Platings)
-                {
-                    <li class="list-group-item">@plating.ToString()</li>
-                }
-            </ul>
+            <li class="list-group-item">
+                @plating.Name
+                @Html.ActionLink(" ", "Details", "Plating", new { id = plating.ID }, new { @class = "fas fa-info-circle float-right pr-3" })
+            </li>
         }
-    </div>
+        
+    }
+</ul>
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

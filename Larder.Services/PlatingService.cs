@@ -17,27 +17,29 @@ namespace Larder.Services
             this.userId = userId;
         }
 
-        public bool AddPlating(PlatingAdd model)
+        public bool AddPlating(PlatingAddList model)
         {
             using(var context = new CookbookContext())
             {
-                var recipe =
-                     context.Recipes.Single(r => r.ID == model.RecipeId);
-                recipe.RecipePlatings = null;
+                var entities = context.RecipePlatings.Where(e => e.RecipeID == model.RecipeId);
+                foreach (var entity in entities)
+                {
+                    context.RecipePlatings.Remove(entity);
+                }
                 foreach (var plating in model.Platings)
                 {
-
-                    if (plating.Value == true)
+                    if (plating.IsIncluded == true)
                     {
-                        recipe.RecipePlatings.Add(
-                                        new RecipePlating()
-                                        {
-                                            PlatingID = plating.Key.ID,
-                                            RecipeID = model.RecipeId
-                                        }); 
+                        context.Set<RecipePlating>().Add(new RecipePlating
+                        {
+                            PlatingID = plating.ID,
+                            RecipeID = model.RecipeId
+                        });
                     }
                 }
-                return context.SaveChanges() == 1;
+                return context.SaveChanges() != 0;
+            
+                
             }
         }
 
@@ -78,8 +80,75 @@ namespace Larder.Services
                 return query.ToArray();
             }
         }
-        
-        public PlatingDetail GetPlatingsbyRecipeId(int platingid)
+        public PlatingDetail GetPlatingbyId(int id)
+        {
+            using(var context = new CookbookContext())
+            {
+                var query =
+                    context
+                           .Platings
+                           .Single(e => e.AuthorID == userId && e.ID == id);
+                return new PlatingDetail()
+                {
+                    ID = query.ID,
+                    Name = query.Name,
+                    Description = query.Description,
+                    DateCreated = query.DateCreated,
+                    DateModified = query.DateModified
+                }; 
+            }
+        }
+        public PlatingAddList GetPlatingsAddList(int id)
+        {
+            var allPlatings = GetPlatings();
+            var model = new PlatingAddList()
+            {
+                RecipeId = id
+            };
+            foreach (var plating in allPlatings)
+            {
+                model.Platings.Add(
+                                    new PlatingAdd
+                                    {
+                                        ID = plating.ID,
+                                        Name = plating.Name,
+                                        Description = plating.Description,
+                                        IsIncluded = false
+                                    });
+            }
+            return model;
+        }
+        public PlatingAddList GetPlatingsUpdateList(int id)
+        {
+            var allPlatings = GetPlatings();
+            var service = new RecipeService(userId);
+            var includedPlatings = service.GetPlatingsByRecipeId(id);
+            var model = new PlatingAddList()
+            {
+                RecipeId = id,
+                Platings = new List<PlatingAdd>()
+            };
+            foreach (var plating in allPlatings)
+            {
+                model.Platings.Add(
+                                    new PlatingAdd
+                                    {
+                                        ID = plating.ID,
+                                        Name = plating.Name,
+                                        Description = plating.Description
+                                    });
+            }
+            foreach (var plating in includedPlatings)
+            {
+                if(model.Platings.Any(p => p.ID == plating.ID))
+                {
+                    model.Platings.Single(p => p.ID == plating.ID).IsIncluded = true;
+                }
+            }
+            return model;
+        }
+
+        public PlatingDetail GetRecipesbyPlatingId(int platingid)
         {
             using (var context = new CookbookContext())
             {

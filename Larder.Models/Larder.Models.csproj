@@ -87,6 +87,7 @@
     <Compile Include="ActionCreate.cs" />
     <Compile Include="ActionDetail.cs" />
     <Compile Include="ActionEdit.cs" />
+    <Compile Include="ActionList.cs" />
     <Compile Include="ActionListItem.cs" />
     <Compile Include="FoodCreate.cs" />
     <Compile Include="FoodDetail.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="IngredientCreateFromTemplate.cs" />
     <Compile Include="IngredientDetail.cs" />
     <Compile Include="IngredientEdit.cs" />
+    <Compile Include="IngredientList.cs" />
     <Compile Include="IngredientListItem.cs" />
     <Compile Include="Identity\AccountViewModels.cs" />
     <Compile Include="Identity\IdentityModels.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="LarderEdit.cs" />
     <Compile Include="LarderListItem.cs" />
     <Compile Include="PlatingAdd.cs" />
+    <Compile Include="PlatingAddList.cs" />
     <Compile Include="PlatingCreate.cs" />
     <Compile Include="PlatingDetail.cs" />
     <Compile Include="PlatingEdit.cs" />

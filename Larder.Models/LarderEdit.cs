@@ -11,8 +11,8 @@ namespace Larder.Models
     public class LarderEdit : FoodEdit
     {
         public Season Season { get; set; }
-        public List<IngredientListItem> Ingredients { get; set; }
+        public IngredientList Ingredients { get; set; }
         [Display(Name="Directions")]
-        public List<ActionListItem> Actions { get; set; }
+        public ActionList Actions { get; set; }
     }
 }

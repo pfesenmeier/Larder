@@ -91,9 +91,10 @@ namespace Larder.Services
                                              Amount = i.Amount,
                                              Unit = i.Unit,
                                              Name = i.Name,
-                                             Description = i.Description
+                                             Description = i.Description,
+                                             LarderId = i.LarderId
                                          }
-                              );
+                              ).ToList();
                 var actions =
                       context
                              .Actions
@@ -106,7 +107,7 @@ namespace Larder.Services
                                          Description = a.Description,
                                          LarderId = a.LarderId
                                      }
-                          );
+                          ).ToList();
                 var recipes =
                       context
                              .Recipes
@@ -127,8 +128,8 @@ namespace Larder.Services
                         ID = entity.ID,
                         Name = entity.Name,
                         Description = entity.Description,
-                        Ingredients = ingredients.ToList(),
-                        Actions = actions.ToList(),
+                        Ingredients = new IngredientList() { LarderId = entity.ID, Ingredients = ingredients },
+                        Actions = new ActionList() { LarderId = entity.ID, Directions = actions },
                         Seasons = entity.Season.GetSeasons(),
                         DateCreated = entity.DateCreated,
                         DateModified = entity.DateModified,

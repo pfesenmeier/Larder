@@ -1,17 +1,21 @@
-﻿@model IEnumerable<Larder.Models.IngredientListItem>
-
-@if (Model.Count() != 0)
-{
-    foreach (var item in Model)
-    {
-        <li class="list-group-item">
-            @Html.DisplayFor(modelItem => item.Amount)
-            @Html.DisplayFor(modelItem => item.Unit)
-            @Html.DisplayFor(modelItem => item.Name)
-            @Html.ActionLink(" ", "Delete", "Ingredient", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right" })
-            @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
-        </li>
-    }
-
-
-}
+﻿@model Larder.Models.IngredientList
+    <div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item h5 font-weight-bold">
+                Ingredients @Html.ActionLink(" ", "Create", "Ingredient", new { id = Model.LarderId }, new { @class = "fas fa-plus float-right" })
+            </li>
+            @if (Model.Ingredients.Count() != 0)
+            {
+                foreach (var item in Model.Ingredients)
+                {
+                    <li class="list-group-item">
+                        @Html.DisplayFor(m => item.Amount)
+                        @Html.DisplayFor(m => item.Unit)
+                        @Html.DisplayFor(m => item.Name)
+                        @Html.ActionLink(" ", "Delete", "Ingredient", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right" })
+                        @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
+                    </li>
+                }
+            }
+        </ul>
+    </div>

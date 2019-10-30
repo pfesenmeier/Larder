@@ -23,61 +23,28 @@ namespace Larder.Controllers
 
         public ActionResult Add(int id)
         {
-            var model = PlatingDictionary(id);
-            return View(model);
-        }
-
-        private PlatingAdd PlatingDictionary(int id)
-        {
             var service = CreatePlatingService();
-            var platings = service.GetPlatings();
-            var model = new PlatingAdd()
-            {
-                RecipeId = id,
-                Platings = new Dictionary<PlatingListItem, bool>()
-            };
-            foreach (var plating in platings)
-            {
-                model.Platings.Add(plating, false);
-            }
-            return model;
+            var model = service.GetPlatingsAddList(id);
+            return View(model);
         }
 
         public ActionResult AddUpdate(int id)
         {
-            var recipeService = new RecipeService(Guid.Parse(User.Identity.GetUserId()));
-            var platings = recipeService.GetPlatingsByRecipeId(id);
-
             var service = CreatePlatingService();
-            var allPlatings = service.GetPlatings();
-            var model = new PlatingAdd()
-            {
-                RecipeId = id
-            };
-            foreach (var plating in allPlatings)
-            {
-                if (platings.Any(p => p.ID == plating.ID))
-                {
-                    model.Platings.Add(plating, true);
-                }
-                else
-                {
-                    model.Platings.Add(plating, false);
-                }
-            }
+            var model = service.GetPlatingsUpdateList(id);
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddUpdate(PlatingAdd model)
+        public ActionResult AddUpdate(PlatingAddList model)
         {
             if (!ModelState.IsValid) return View(model);
             var service = CreatePlatingService();
             if (service.AddPlating(model)) 
             {
                 TempData["Save Result"] = "Changes Saved.";
-                return RedirectToAction("Edit", "Recipe", new { id = model.RecipeId });
+                return RedirectToAction("Index", "Recipe", new { id = model.RecipeId });
             }
             else
             {
@@ -123,7 +90,7 @@ namespace Larder.Controllers
         public ActionResult Details(int id)
         {
             var service = CreatePlatingService();
-            var model = service.GetPlatingsbyRecipeId(id);
+            var model = service.GetPlatingbyId(id);
 
             return View(model);
         }
@@ -131,14 +98,7 @@ namespace Larder.Controllers
         public ActionResult Edit(int id)
         {
             var service = CreatePlatingService();
-            var detail = service.GetPlatingsbyRecipeId(id);
-            var model =
-                new PlatingEdit
-                {
-                    ID = detail.ID,
-                    Name = detail.Name,
-                    Description = detail.Description
-                };
+            var model = service.GetPlatingsUpdateList(id);
             return View(model);
         }
 
@@ -169,7 +129,7 @@ namespace Larder.Controllers
         public ActionResult Delete(int id)
         {
             var service = CreatePlatingService();
-            var model = service.GetPlatingsbyRecipeId(id);
+            var model = service.GetPlatingbyId(id);
 
             return View(model);
         }

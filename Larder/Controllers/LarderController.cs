@@ -6,22 +6,37 @@ using System.Web;
 using System.Web.Mvc;
 using Larder.Services;
 using Larder.Models;
+using System.Threading.Tasks;
 
 namespace Larder.Controllers
 {
     [Authorize]
     public class LarderController : Controller
     {
-
-        // GET: Larder
         public ActionResult Index()
         {
             var service = CreateLarderService();
-            var model = service.GetLarders();
-
+            var model = new LarderList()
+            {
+                SeasonFilter = new SeasonFilter(),
+                Larders = service.GetLarders()
+            };
             return View(model);
         }
 
+        // GET: Larder
+        [ActionName("FilterIndex")]
+        public ActionResult Index(SeasonFilter SeasonFilter)
+        {
+            var service = CreateLarderService();
+            var model = new LarderList()
+            {
+                SeasonFilter = new SeasonFilter()
+            };
+            model.Larders = service.GetLardersBySeason(SeasonFilter);
+            model.SeasonFilter = SeasonFilter;
+            return View("Index", model);
+        }
         public ActionResult Create()
         {
             return View();

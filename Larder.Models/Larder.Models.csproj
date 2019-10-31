@@ -105,6 +105,7 @@
     <Compile Include="LarderCreate.cs" />
     <Compile Include="LarderDetail.cs" />
     <Compile Include="LarderEdit.cs" />
+    <Compile Include="LarderList.cs" />
     <Compile Include="LarderListItem.cs" />
     <Compile Include="PlatingAdd.cs" />
     <Compile Include="PlatingAddList.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="RecipeDetail.cs" />
     <Compile Include="RecipeEdit.cs" />
     <Compile Include="RecipeListItem.cs" />
+    <Compile Include="SeasonFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

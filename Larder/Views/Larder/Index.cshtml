@@ -1,9 +1,40 @@
-﻿@model IEnumerable<Larder.Models.LarderListItem>
+﻿@model Larder.Models.LarderList
 
 @{
     ViewBag.Title = "Larder";
 }
-<h1 class="display-4">Larder</h1>
-@Html.Partial("_IndexBody", Model)
+<div>
+    <h1 class="display-4 float-left">Larder</h1>
+    <div class="dropdown float-right">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter by Season
+        </button>
+        @using (Html.BeginForm("FilterIndex", "Larder", FormMethod.Get, htmlAttributes: new { @class = "dropdown-menu p-4" }))
+        {
+            <div class="form-check">
+                @Html.CheckBoxFor(model => model.SeasonFilter.Summer)
+                @Html.HiddenFor(model => model.SeasonFilter.Summer)
+                Summer
+            </div>
+            <div class="form-check">
+                @Html.CheckBoxFor(model => model.SeasonFilter.Fall)
+                @Html.HiddenFor(model => model.SeasonFilter.Fall)
+                Fall
+            </div>
+            <div class="form-check">
+                @Html.CheckBoxFor(model => model.SeasonFilter.Winter)
+                @Html.HiddenFor(model => model.SeasonFilter.Winter)
+                Winter
+            </div>
+            <div class="form-check">
+                @Html.CheckBoxFor(model => model.SeasonFilter.Spring)
+                @Html.HiddenFor(model => model.SeasonFilter.Spring)
+                Spring
+            </div>
+            <button type="submit" class="btn btn-success ml-3 mt-1">Submit</button>
+        }
+    </div>
+</div>
+@Html.Partial("_IndexBody", Model.Larders)
 
 

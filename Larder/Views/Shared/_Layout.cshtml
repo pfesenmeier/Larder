@@ -9,22 +9,22 @@
     @Scripts.Render("~/bundles/modernizr")
     <script src="https://kit.fontawesome.com/144e00f3b6.js" crossorigin="anonymous"></script>
 </head>
-<body style="max-width: 750px; margin-left:auto; margin-right: auto;">
-    <nav class="navbar navbar-expand navbar-light fixed-top bg-light">
-        @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fas fa-home" })
+<body style="background-color:#cfffd4; max-width: 750px; margin-left:auto; margin-right: auto;">
+    <nav class="navbar navbar-expand navbar-light fixed-top " style="background-color:#00911e;">
+        @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fas fa-home", style="color:#e8ffed"})
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    @Html.ActionLink("Larder", "Index", "Larder", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Larder", "Index", "Larder", null, new { @class = "navbar-brand", style="color:#e8ffed" });
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Recipes", "Index", "Recipe", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Recipes", "Index", "Recipe", null, new { @class = "navbar-brand", style="color:#e8ffed"})
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Platings", "Index", "Plating", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Platings", "Index", "Plating", null, new { @class = "navbar-brand", style="color:#e8ffed"})
                 </li>
             </ul>
             @*<form class="form-inline mt-2 mt-md-0">
@@ -33,10 +33,10 @@
             </form>*@
         </div>
     </nav>
-    <div class="container body-content pt-3">
+    <div class="container body-content pt-3" style="background-color:#fafffb;">
         @RenderBody()
         <hr />
-        <footer>
+        <footer class="mx-4 pb-1">
             <p>
                 &copy; @DateTime.Now.Year - Paul Fesenmeier
                 | @Html.ActionLink("About", "About", "Home") | 

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Larder.Data.DAL;
+using System.Net.Http;
+
 namespace Larder.Services
 {
     public class LarderService
@@ -69,6 +71,29 @@ namespace Larder.Services
                            );
                 return query.ToArray();
             }
+        }
+
+        public IEnumerable<LarderListItem> GetLardersBySeason(SeasonFilter season)
+        {
+            var allLarders = GetLarders();
+            var FilteredLarders = new List<LarderListItem>();
+            if (season.Fall) 
+            {
+                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Fall == true));
+            }
+            if (season.Spring)
+            {
+                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Spring == true));
+            }
+            if (season.Summer)
+            {
+                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Summer == true));
+            }
+            if (season.Winter)
+            {
+                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Winter == true));
+            }
+            return FilteredLarders;
         }
 
         public LarderDetail GetLarderbyId(int id)

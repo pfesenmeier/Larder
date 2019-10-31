@@ -94,8 +94,29 @@ namespace Larder.Services
                     Name = query.Name,
                     Description = query.Description,
                     DateCreated = query.DateCreated,
-                    DateModified = query.DateModified
+                    DateModified = query.DateModified,
+                    Recipes = GetRecipesByPlatingId(id)
                 }; 
+            }
+        }
+
+        private List<RecipeListItem> GetRecipesByPlatingId(int id)
+        {
+            using(var context = new CookbookContext())
+            {
+               return context
+                            .RecipePlatings
+                            .Where(rp => rp.PlatingID == id)
+                            .Select(rp =>
+                                    new RecipeListItem()
+                                    {
+                                        ID = rp.RecipeID,
+                                        Name = context
+                                                    .Recipes
+                                                    .FirstOrDefault(r => r.ID == rp.RecipeID)
+                                                    .Name
+                                    })
+                                    .ToList();
             }
         }
         public PlatingAddList GetPlatingsAddList(int id)
@@ -146,30 +167,6 @@ namespace Larder.Services
                 }
             }
             return model;
-        }
-
-        public PlatingDetail GetRecipesbyPlatingId(int platingid)
-        {
-            using (var context = new CookbookContext())
-            {
-                var entity =
-                    context
-                           .Platings
-                           .Single(e => e.ID == platingid && e.AuthorID == userId);
-                var service = new RecipeService(userId);
-                List<RecipeListItem> Recipes = service.GetRecipesByPlatingId(platingid);
-
-                return
-                    new PlatingDetail
-                    {
-                        ID = entity.ID,
-                        Name = entity.Name,
-                        Description = entity.Description,
-                        DateCreated = entity.DateCreated,
-                        DateModified = entity.DateModified,
-                        Recipes = Recipes
-                    };
-            }
         }
 
         public bool UpdatePlating(PlatingEdit model)

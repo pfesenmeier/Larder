@@ -1,0 +1,24 @@
+﻿@model Larder.Models.PlatingEdit
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1 class="display-4">Edit</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(modelItem => Model.ID)
+    @Html.Partial("_FoodCreate", Model)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

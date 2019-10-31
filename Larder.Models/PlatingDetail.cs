@@ -8,7 +8,7 @@ namespace Larder.Models
 {
     public class PlatingDetail : FoodDetail
     {
-        public int RecipeId { get; set; }
+        public int PlatingId { get; set; }
 
         public List<RecipeListItem> Recipes { get; set; }
     }

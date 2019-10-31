@@ -21,6 +21,6 @@ namespace Larder.Data.Models
         public string Description { get; set; }
         public DateTimeOffset DateCreated { get; set; }
         public DateTimeOffset? DateModified { get; set; }
-
+        public override string ToString() => Name;
     }
 }

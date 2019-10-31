@@ -98,7 +98,13 @@ namespace Larder.Controllers
         public ActionResult Edit(int id)
         {
             var service = CreatePlatingService();
-            var model = service.GetPlatingsUpdateList(id);
+            var detail = service.GetPlatingbyId(id);
+            var model = new PlatingEdit()
+            {
+                ID = detail.ID,
+                Name = detail.Name,
+                Description = detail.Description
+            };
             return View(model);
         }
 

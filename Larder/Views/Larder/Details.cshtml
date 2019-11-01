@@ -11,5 +11,25 @@
 @Html.Partial("_ActionList", Model.Actions)
 
 <p class="mx-4">
+    <button onclick="toggleEdit()">Edit</button>
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section scripts{
+
+<script>
+    function toggleEdit() {
+        console.log("hello")
+        var x = document.getElementsByClassName("fa-edit");
+        console.log(x)
+        var i;
+        for (i = 0; i < x.length; i++){
+            if (x[i].style.display === "none"){
+                x[i].style.display = "block";
+            } else {
+                x[i].style.display = "none";
+            }
+        }
+    }    
+</script>
+}

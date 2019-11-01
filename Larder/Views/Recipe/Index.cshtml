@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "Recipes";
 }
-@{ViewData["controller"] = "Recipe"; }
-<h1 class="display-4">Recipes</h1>
-@Html.Partial("_SeasonFilter", Model.SeasonFilter, ViewData)
+
+<h1 class="display-4 float-left">Recipes</h1>
+@Html.Partial("_SeasonFilter", Model.SeasonFilter)
 @Html.Partial("_IndexBody", Model.Larders)
 
 

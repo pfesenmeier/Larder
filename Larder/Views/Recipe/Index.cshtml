@@ -1,9 +1,11 @@
-﻿@model IEnumerable<Larder.Models.RecipeListItem>
+﻿@model Larder.Models.RecipeList
 
 @{
     ViewBag.Title = "Recipes";
 }
+@{ViewData["controller"] = "Recipe"; }
 <h1 class="display-4">Recipes</h1>
-@Html.Partial("_IndexBody", Model)
+@Html.Partial("_SeasonFilter", Model.SeasonFilter, ViewData)
+@Html.Partial("_IndexBody", Model.Larders)
 
 

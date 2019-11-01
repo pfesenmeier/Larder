@@ -70,6 +70,28 @@ namespace Larder.Services
             }
         }
 
+        public IEnumerable<RecipeListItem> GetRecipesBySeason(SeasonFilter season)
+        {
+            var allRecipes = GetRecipes();
+            var FilteredRecipes = new List<RecipeListItem>();
+            if (season.Fall)
+            {
+                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Fall == true));
+            }
+            if (season.Spring)
+            {
+                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Spring == true));
+            }
+            if (season.Summer)
+            {
+                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Summer == true));
+            }
+            if (season.Winter)
+            {
+                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Winter == true));
+            }
+            return FilteredRecipes;
+        }
         public RecipeDetail GetRecipebyId(int id)
         {
             using (var context = new CookbookContext())

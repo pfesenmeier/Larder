@@ -364,6 +364,7 @@
     <Content Include="Views\Recipe\Delete.cshtml" />
     <Content Include="Views\Plating\Delete.cshtml" />
     <Content Include="Views\Plating\Edit.cshtml" />
+    <Content Include="Views\Shared\_SeasonFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

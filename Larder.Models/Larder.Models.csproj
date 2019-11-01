@@ -117,6 +117,7 @@
     <Compile Include="RecipeCreate.cs" />
     <Compile Include="RecipeDetail.cs" />
     <Compile Include="RecipeEdit.cs" />
+    <Compile Include="RecipeList.cs" />
     <Compile Include="RecipeListItem.cs" />
     <Compile Include="SeasonFilter.cs" />
   </ItemGroup>

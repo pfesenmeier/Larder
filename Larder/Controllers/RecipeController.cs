@@ -14,9 +14,31 @@ namespace Larder.Controllers
         public ActionResult Index()
         {
             var service = CreateRecipeService();
-            var model = service.GetRecipes();
-
+            var model = new RecipeList()
+            {
+                SeasonFilter = new SeasonFilter() 
+                {
+                    ControllerName = "Recipe"
+                },
+                Larders = service.GetRecipes(),
+            };
             return View(model);
+        }
+
+        [ActionName("FilterIndex")]
+        public ActionResult Index(SeasonFilter seasonFilter)
+        {
+            var service = CreateRecipeService();
+            var model = new LarderList()
+            {
+                SeasonFilter = new SeasonFilter()
+                {
+                    ControllerName = "Recipe",
+                }
+            };
+            model.Larders = service.GetRecipesBySeason(seasonFilter);
+            model.SeasonFilter = seasonFilter;
+            return View("Index", model);
         }
 
         public ActionResult Create()

@@ -1,0 +1,31 @@
+﻿@model Larder.Models.SeasonFilter
+
+<div class="dropdown float-right">
+    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter by Season
+    </button>
+    @using (Html.BeginForm("FilterIndex", Model.ControllerName, FormMethod.Get,  htmlAttributes: new { @class = "dropdown-menu p-4" }))
+    {
+        <div class="form-check">
+            @Html.CheckBoxFor(model => model.Summer)
+            @Html.HiddenFor(model => model.Summer)
+            Summer
+        </div>
+        <div class="form-check">
+            @Html.CheckBoxFor(model => model.Fall)
+            @Html.HiddenFor(model => model.Fall)
+            Fall
+        </div>
+        <div class="form-check">
+            @Html.CheckBoxFor(model => model.Winter)
+            @Html.HiddenFor(model => model.Winter)
+            Winter
+        </div>
+        <div class="form-check">
+            @Html.CheckBoxFor(model => model.Spring)
+            @Html.HiddenFor(model => model.Spring)
+            Spring
+        </div>
+        <button type="submit" class="btn btn-success ml-3 mt-1">Submit</button>
+    }
+</div>

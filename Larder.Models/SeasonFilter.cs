@@ -13,5 +13,7 @@ namespace Larder.Models
         public bool Spring { get; set; }
         public bool Fall { get; set; }
         public bool Summer { get; set; }
+
+        public string ControllerName { get; set; }
     }
 }

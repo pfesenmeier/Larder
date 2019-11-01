@@ -18,7 +18,10 @@ namespace Larder.Controllers
             var service = CreateLarderService();
             var model = new LarderList()
             {
-                SeasonFilter = new SeasonFilter(),
+                SeasonFilter = new SeasonFilter() 
+                {
+                    ControllerName = "Larder"
+                },
                 Larders = service.GetLarders()
             };
             return View(model);
@@ -29,9 +32,12 @@ namespace Larder.Controllers
         public ActionResult Index(SeasonFilter SeasonFilter)
         {
             var service = CreateLarderService();
-            var model = new LarderList()
+            var model = new RecipeList()
             {
                 SeasonFilter = new SeasonFilter()
+                {
+                    ControllerName = "Larder"
+                }
             };
             model.Larders = service.GetLardersBySeason(SeasonFilter);
             model.SeasonFilter = SeasonFilter;

@@ -29,7 +29,7 @@ namespace Larder.Controllers
         public ActionResult Index(SeasonFilter seasonFilter)
         {
             var service = CreateRecipeService();
-            var model = new LarderList()
+            var model = new RecipeList()
             {
                 SeasonFilter = new SeasonFilter()
                 {

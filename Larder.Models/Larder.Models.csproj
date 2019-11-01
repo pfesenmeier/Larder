@@ -99,9 +99,7 @@
     <Compile Include="IngredientEdit.cs" />
     <Compile Include="IngredientList.cs" />
     <Compile Include="IngredientListItem.cs" />
-    <Compile Include="Identity\AccountViewModels.cs" />
     <Compile Include="Identity\IdentityModels.cs" />
-    <Compile Include="Identity\ManageViewModels.cs" />
     <Compile Include="LarderCreate.cs" />
     <Compile Include="LarderDetail.cs" />
     <Compile Include="LarderEdit.cs" />

@@ -13,7 +13,7 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.Templates, htmlAttributes: new { @class = "control-label" })
-        <select name="Template" class="form-control" id="Template">
+        <select name="TemplateId" class="form-control" id="Template">
             @foreach (var template in Model.Templates)
             {
                 <option value="@template.ID">@template.Name</option>
@@ -22,16 +22,13 @@
         @Html.ValidationMessageFor(model => model.Templates, "", new { @class = "text-danger" })
     </div>
     @Html.Partial("_IngredientCreate", Model)
-    <button type="submit" value="CreateFromTemplate" class="btn btn-primary">Create</button>
+    <button type="submit" value="CreateFromTemplate" class="btn btn-success">Create</button>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 @using (Html.BeginForm())
 {
 <div>
-    @Html.ActionLink("Add Ingredients", "Create", "Action", new { LarderId = Model.LarderId })
+    @Html.ActionLink("Add Standard Ingredients", "Create", "Ingredient", new { id = Model.LarderId }, null)
 </div>
 }
 

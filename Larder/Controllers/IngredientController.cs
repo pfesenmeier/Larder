@@ -25,7 +25,7 @@ namespace Larder.Controllers
         // Display CreateView for first, and...
         public ActionResult Create(int id)
         {
-            var model = new IngredientCreate
+            var model = new IngredientCreate()
             {
                 LarderId = id
             };
@@ -59,7 +59,7 @@ namespace Larder.Controllers
         public ActionResult CreateFromTemplate(IngredientCreateFromTemplate model)
         {
             if ((!ModelState.IsValid) ||
-                (SaveCreate(model) == false)) return View(model);
+                (SaveCreateFromTemplate(model) == false)) return View(model);
 
             return RedirectToAction("CreateFromTemplate", new {recipeId = model.LarderId });
         }
@@ -68,6 +68,21 @@ namespace Larder.Controllers
         {
             var service = CreateIngredientService();
             if (service.CreateIngredient(model))
+            {
+                TempData["SaveResult"] = "Your ingredient was created.";
+                return true;
+            }
+            else
+            {
+                ModelState.AddModelError("", "Ingredient could not be created.");
+                return false;
+            }
+        }
+
+        private bool SaveCreateFromTemplate(IngredientCreateFromTemplate model)
+        {
+            var service = CreateIngredientService();
+            if (service.CreateIngredientFromTemplate(model))
             {
                 TempData["SaveResult"] = "Your ingredient was created.";
                 return true;

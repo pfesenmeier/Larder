@@ -1,7 +1,10 @@
 ﻿@model Larder.Models.FoodDetail
-
-    <h1 class="display-4">@Html.DisplayFor(model => model.Name) @Html.ActionLink(" ", "Edit", new { id = Model.ID }, new { @class = "fas fa-edit" })</h1>
-
+   
+    <h1 class="display-4">
+        @Html.DisplayFor(model => model.Name)
+        <span style="font-size:36px;">    @Html.ActionLink(" ", "Edit", new { id = Model.ID }, new { @class = "fas fa-edit" })</span>
+        </h1>
+    
 <div class="mt-3">
     <dl class="dl-horizontal">
         <dt>

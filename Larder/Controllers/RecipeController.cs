@@ -56,7 +56,7 @@ namespace Larder.Controllers
             if (id != null)
             {
                 TempData["SaveResult"] = "Your recipe was created.";
-                return RedirectToAction("Create", "Ingredient", new { isRecipe = false, id });
+                return RedirectToAction("CreateFromTemplate", "Ingredient", new { recipeid = id });
             }
             else
             {

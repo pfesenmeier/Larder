@@ -38,7 +38,7 @@ namespace Larder.Controllers
             if (service.CreateAction(model))
             {
                 TempData["SaveResult"] = "Step was created.";
-                return Create(model.LarderID);
+                return RedirectToAction("Create", model.LarderID);
             }
             else
             {

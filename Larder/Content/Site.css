@@ -27,6 +27,45 @@ a {
     color: #22c900;
 }
 
+a:hover{
+    color:lightgreen;
+}
+
 .btn {
     border-radius: 0rem;
+}
+
+.far.fa-edit, .fa-trash-alt {
+    color: #cf0e00;
+}
+
+.far.fa-edit:hover, .fa-trash-alt:hover{
+    color: red;
+}
+
+
+nav {
+    background-color: #00911e;
+}
+
+nav a {
+    color:#e8ffed !important;
+}
+
+body {
+    background-color: #cfffd4;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.body-content{
+    background-color: #fafffb;
+}
+
+.detail-edit{
+    color: darkorange;
+}
+.detail-edit:hover{
+    color:orange;
 }

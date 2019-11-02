@@ -9,8 +9,8 @@
     @Styles.Render("~/Content/css")
     <script src="https://kit.fontawesome.com/144e00f3b6.js" crossorigin="anonymous"></script>
 </head>
-<body style="background-color:#cfffd4; max-width: 750px; margin-left:auto; margin-right: auto;">
-    <nav class="navbar navbar-expand navbar-light fixed-top " style="background-color:#00911e;">
+<body>
+    <nav class="navbar navbar-expand navbar-light fixed-top"  >
         @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fas fa-home"})
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,20 +20,22 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                 <li class="nav-item">
-                    @Html.ActionLink("Larder", "Index", "Larder", null, new { @class = "navbar-brand", style = "color:#e8ffed" })
+                    @Html.ActionLink("Larder", "Index", "Larder", null, new { @class = "navbar-brand"})
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Recipes", "Index", "Recipe", null, new { @class = "navbar-brand", style = "color:#e8ffed" })
+                    @Html.ActionLink("Recipes", "Index", "Recipe", null, new { @class = "navbar-brand" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Platings", "Index", "Plating", null, new { @class = "navbar-brand", style = "color:#e8ffed" })
+                    @Html.ActionLink("Platings", "Index", "Plating", null, new { @class = "navbar-brand"})
                 </li>
                 }
+                <li>
+                </li>
             </ul>
-            @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartial")
         </div>
     </nav>
-    <div class="container body-content pt-3" style="background-color:#fafffb;">
+    <div class="container body-content pt-3">
         @RenderBody()
         <hr />
         <footer class="mx-4 pb-1">

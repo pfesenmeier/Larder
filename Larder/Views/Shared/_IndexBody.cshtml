@@ -7,7 +7,6 @@
             <th scope="col">Description</th>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -21,22 +20,36 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "fas fa-info-circle" })
+                    @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "fas fa-chevron-right" })
                 </td>
-                <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fas fa-edit" })
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "fas fa-trash-alt" })
+                <td class="trashcan" style="display:none;">
+                    @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "fas fa-trash-alt", })
                 </td>
             </tr>
         }
         <tr>
-            <th>@Html.ActionLink(" ", "Create", null, new { @class = "fas fa-plus" })</th>
-            <td></td>
+            <th>
+                @Html.ActionLink(" ", "Create", null, new { @class = "fas fa-plus" })
+                <i class="fas fa-trash-alt ml-3" onclick="showCans()"></i>
+            </th>
             <td></td>
             <td></td>
             <td></td>
         </tr>
     </tbody>
 </table>
+
+    <script>
+        function showCans() {
+            var x = document.getElementsByClassName("trashcan");
+            console.log('hello')
+            var i;
+            for (i = 0; i < x.length; i++) {
+                if (x[i].style.display === "none") {
+                    x[i].style.display = "block";
+                } else {
+                    x[i].style.display = "none";
+                }
+            }
+        }
+    </script>

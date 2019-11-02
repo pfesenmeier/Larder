@@ -11,20 +11,17 @@
 @Html.Partial("_ActionList", Model.Actions)
 
 <p class="mx-4">
-    <button onclick="toggleEdit()">Edit</button>
-    @Html.ActionLink("Back to List", "Index")
+    <i class="far fa-edit"onclick="toggleEdit()"></i>
 </p>
 
-@section scripts{
 
 <script>
     function toggleEdit() {
-        console.log("hello")
-        var x = document.getElementsByClassName("fa-edit");
-        console.log(x)
+        var x = document.querySelectorAll(".detail-edit");
         var i;
+        console.log(x);
         for (i = 0; i < x.length; i++){
-            if (x[i].style.display === "none"){
+            if (x.style.display === "none") {
                 x[i].style.display = "block";
             } else {
                 x[i].style.display = "none";
@@ -32,4 +29,4 @@
         }
     }    
 </script>
-}
+

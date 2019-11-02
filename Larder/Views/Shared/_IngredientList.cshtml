@@ -2,7 +2,7 @@
     <div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item h5 font-weight-bold">
-                Ingredients @Html.ActionLink(" ", "Create", "Ingredient", new { id = Model.LarderId }, new { @class = "fas fa-plus float-right" })
+                Ingredients @Html.ActionLink(" ", "Create", "Ingredient", new { id = Model.LarderId }, new { @class = "fas fa-plus float-right detail-add" })
             </li>
             @if (Model.Ingredients.Count() != 0)
             {
@@ -12,8 +12,13 @@
                         @Html.DisplayFor(m => item.Amount)
                         @Html.DisplayFor(m => item.Unit)
                         @Html.DisplayFor(m => item.Name)
-                        @Html.ActionLink(" ", "Delete", "Ingredient", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right" })
-                        @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
+                        <span class="float-right">
+                            <span class="detail-edit detail-delete">
+                                &nbsp;
+                                @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit pr-3" })
+                                @Html.ActionLink(" ", "Delete", "Ingredient", new { id = item.ID }, new { @class = "fas fa-trash-alt" })
+                            </span>
+                        </span>
                     </li>
                 }
             }

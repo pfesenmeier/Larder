@@ -55,6 +55,20 @@ namespace Larder.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateActionService();
+            var detail = service.GetActionById(id);
+            var model =
+                new ActionEdit()
+                {
+                    ID = detail.ID,
+                    Description = detail.Description
+                };
+
+            return View(model);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ActionEdit model)
@@ -69,7 +83,7 @@ namespace Larder.Controllers
             if (service.UpdateAction(model))
             {
                 TempData["Save Result"] = "Your step was updated.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

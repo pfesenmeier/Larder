@@ -124,7 +124,8 @@ namespace Larder.Services
             var allPlatings = GetPlatings();
             var model = new PlatingAddList()
             {
-                RecipeId = id
+                RecipeId = id,
+                Platings = new List<PlatingAdd>()
             };
             foreach (var plating in allPlatings)
             {

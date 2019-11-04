@@ -89,7 +89,7 @@ namespace Larder.Services
                     context
                            .Ingredients
                            .Single(e => e.ID == id && e.AuthorID == userId);
-                return
+                var ingredientDetail =
                     new IngredientDetail
                     {
                         ID = entity.ID,
@@ -98,8 +98,16 @@ namespace Larder.Services
                         DateCreated = entity.DateCreated,
                         DateModified = entity.DateModified,
                         Amount = entity.Amount,
-                        Unit = entity.Unit
+                        Unit = entity.Unit,
+                        TemplateId = entity.TemplateId,
                     };
+                var TemplateName = context.Larders
+                                      .SingleOrDefault(l => l.AuthorID == userId && l.ID == entity.TemplateId);
+                if (TemplateName != null)
+                { 
+                    ingredientDetail.TemplateName = TemplateName.Name.ToString();
+                }
+                return ingredientDetail;
             }
         }
 

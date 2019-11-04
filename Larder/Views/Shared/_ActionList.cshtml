@@ -3,7 +3,11 @@
     <ul class="list-group list-group-flush">
         <li class="list-group-item h5 font-weight-bold">
             Directions
-             @Html.ActionLink(" ", "Create", "Action", new { Id = Model.LarderId }, new { @class = "fas fa-plus float-right detail-add" })
+            <span class="float-right">
+                <span class="detail">
+             @Html.ActionLink(" ", "Create", "Action", new { Id = Model.LarderId }, new { @class = "fas fa-plus detail-add" })
+                </span>
+            </span>
         </li>
 @if (Model.Directions.Count() != 0)
 {
@@ -13,8 +17,12 @@
             <li class="list-group-item">
                 @i.
                 @Html.DisplayFor(modelItem => item.Description)
-                @Html.ActionLink(" ", "Delete", "Action", new { id = item.ID }, new { @class = "fas fa-trash-alt float-right" })
-                @Html.ActionLink(" ", "Edit", "Action", new { id = item.ID }, new { @class = "fas fa-edit float-right pr-3" })
+                <span class="float-right">
+                <span class="detail">
+                @Html.ActionLink(" ", "Edit", "Action", new { id = item.ID }, new { @class = "fas fa-edit pr-3 detail-edit" })
+                @Html.ActionLink(" ", "Delete", "Action", new { id = item.ID }, new { @class = "fas fa-trash-alt detail-delete" })
+                    </span>
+                </span>
             </li>
             i++;
         }

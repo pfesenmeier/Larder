@@ -37,14 +37,14 @@ namespace Larder.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddUpdate(PlatingAddList model)
+        public ActionResult Add(PlatingAddList model)
         {
             if (!ModelState.IsValid) return View(model);
             var service = CreatePlatingService();
             if (service.AddPlating(model)) 
             {
                 TempData["Save Result"] = "Changes Saved.";
-                return RedirectToAction("Index", "Recipe", new { id = model.RecipeId });
+                return RedirectToAction("CreateFromTemplate", "Ingredient", new { recipeid = model.RecipeId });
             }
             else
             {
@@ -53,7 +53,25 @@ namespace Larder.Controllers
             }
         }
 
-        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddUpdate(PlatingAddList model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            var service = CreatePlatingService();
+            if (service.AddPlating(model))
+            {
+                TempData["Save Result"] = "Changes Saved.";
+                return RedirectToAction("Create", "Recipe", new { id = model.RecipeId });
+            }
+            else
+            {
+                ModelState.AddModelError("", "Your plating style could not be update.");
+                return View(model);
+            }
+        }
+
+
 
         // GET /Plating/Create
         // Display CreateView for first, and...

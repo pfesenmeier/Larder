@@ -48,8 +48,11 @@ nav {
     background-color: #00911e;
 }
 
-nav a {
+nav a{
     color:#e8ffed !important;
+}
+
+.navbar-toggler{
 }
 
 body {
@@ -68,4 +71,12 @@ body {
 }
 .detail-edit:hover{
     color:orange;
+}
+
+.trash-toggle{
+    color: black;
+}
+
+.detail{
+    display: none;
 }

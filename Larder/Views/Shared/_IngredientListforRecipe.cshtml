@@ -1,0 +1,35 @@
+﻿@model Larder.Models.IngredientList
+<div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item h5 font-weight-bold">
+            Ingredients
+            <span class="float-right">
+                <span class="detail">
+                    @Html.ActionLink(" ", "CreateFromTemplate", "Ingredient", new { recipeid = Model.LarderId }, new { @class = "fas fa-mortar-pestle pr-3" })
+                    @Html.ActionLink(" ", "Create", "Ingredient", new { id = Model.LarderId }, new { @class = "fas fa-plus detail-add" })
+                </span>
+            </span>
+        </li>
+        @if (Model.Ingredients.Count() != 0)
+        {
+            foreach (var item in Model.Ingredients)
+            {
+                <li class="list-group-item">
+                    @Html.DisplayFor(m => item.Amount)
+                    @Html.DisplayFor(m => item.Unit)
+                    @Html.DisplayFor(m => item.Name)
+                    <span class="float-right">
+                        <span>
+                            @Html.ActionLink(" ", "Details", "Ingredient", new { id = item.ID }, new { @class = "fas fa-info pr-3 detail-info" })
+                        </span>
+                        <span class="detail float-right">
+                            &nbsp;
+                            @Html.ActionLink(" ", "Edit", "Ingredient", new { id = item.ID }, new { @class = "fas fa-edit pr-3 detail-edit" })
+                            @Html.ActionLink(" ", "Delete", "Ingredient", new { id = item.ID }, new { @class = "fas fa-trash-alt detail-delete" })
+                        </span>
+                    </span>
+                </li>
+            }
+        }
+    </ul>
+</div>

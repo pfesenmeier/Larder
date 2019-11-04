@@ -3,19 +3,19 @@
 @{
     ViewBag.Title = "Details";
 }
-
-@Html.Partial("_FoodDetails", Model)
-@Html.Partial("_SeasonDetail", Model.Seasons)
-<ul class="list-group list-group-flush">
-    <li  class="h5 list-group-item font-weight-bold">
-        @Html.ActionLink(" ","CreateFromTemplate", "Ingredient", new { recipeid = Model.ID }, new { @class ="fas fa-mortar-pestle float-right"})
-    </li>
-</ul>
-@Html.Partial("_IngredientList", Model.Ingredients)
+<div class="mx-4">
+    @Html.Partial("_FoodDetails", Model)
+    @Html.Partial("_SeasonDetail", Model.Seasons)
+</div>
+@Html.Partial("_IngredientListforRecipe", Model.Ingredients)
 @Html.Partial("_ActionList", Model.Actions)
+
 <ul class="list-group list-group-flush">
     <li class="list-group-item h5 font-weight-bold">
-        Platings @Html.ActionLink(" ", "AddUpdate", "Plating", new { id = Model.ID }, new { @class = "fas fa-edit float-right" })
+        Platings 
+        <span class="detail float-right">
+            @Html.ActionLink(" ", "AddUpdate", "Plating", new { id = Model.ID }, new { @class = "fas fa-edit  detail-edit" })
+        </span>
     </li>
     @if (Model.Platings.Count() != 0)
     {
@@ -23,14 +23,31 @@
         {
             <li class="list-group-item">
                 @plating.Name
-                @Html.ActionLink(" ", "Details", "Plating", new { id = plating.ID }, new { @class = "fas fa-info-circle float-right pr-3" })
+                <span class="float-right">
+                    @Html.ActionLink(" ", "Details", "Plating", new { id = plating.ID }, new { @class = "fas fa-info float-right pr-3" })
+                </span>
             </li>
         }
         
     }
 </ul>
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+<p class="mx-4">
+    <i class="far fa-edit" onclick="toggleEdit()"></i>
 </p>
+
+<script>
+    function toggleEdit() {
+        var x = document.getElementsByClassName("detail");
+        console.log('hello')
+        console.log(x)
+        var i;
+        for (i = 0; i < x.length; i++) {
+            if (x[i].style.display === "none" || x[i].style.display === "") {
+                x[i].style.display = "block";
+            } else {
+                x[i].style.display = "none";
+            }
+        }
+    }
+</script>

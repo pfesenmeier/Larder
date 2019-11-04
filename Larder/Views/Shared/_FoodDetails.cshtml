@@ -2,7 +2,12 @@
    
     <h1 class="display-4">
         @Html.DisplayFor(model => model.Name)
-        <span style="font-size:36px;">    @Html.ActionLink(" ", "Edit", new { id = Model.ID }, new { @class = "fas fa-edit" })</span>
+            <span class="float-right mt-3" style="font-size:36px;">
+                <span class="detail">
+                    &nbsp;
+                    @Html.ActionLink(" ", "Edit", new { id = Model.ID }, new { @class = "fas fa-edit" })
+                </span>
+            </span>
         </h1>
     
 <div class="mt-3">

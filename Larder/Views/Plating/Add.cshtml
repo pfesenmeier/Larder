@@ -4,7 +4,6 @@
 }
 
 <h1 class="display-4">Add Plating</h1>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -13,25 +12,24 @@
 
     <table class="table">
         <tbody>
-        @if (Model.Platings != null)
-        {
-            foreach (var plating in Model.Platings)
+
+            @for (int i = 0; i < Model.Platings.Count(); i++)
             {
-            <tr>
-                <th>
-                    <div class="form-group">
-                        @Html.CheckBox(plating.Key.ID.ToString(), plating.Value, new { @class = "form-check-input" })
-                        @Html.Label(plating.Key.Name, new { @class = "form-check-label font-weight-bold" })
-                    </div>
-                </th>
-                <td>
-                        @plating.Key.Description
-                </td>
-            </tr>
+                <tr>
+                    <th>
+                        <div class="form-group">
+                            @Html.CheckBoxFor(m => m.Platings[i].IsIncluded, new { @class = "form-check-input" })
+                            @Html.DisplayFor(m => m.Platings[i].Name)
+                            @Html.HiddenFor(m => m.Platings[i].ID)
+                        </div>
+                    </th>
+                    <td>
+                        @Html.DisplayFor(m => m.Platings[i].Description)
+                    </td>
+                </tr>
             }
-        }
+
         </tbody>
     </table>
-    <button type="submit" value="AddUpdate" class="btn btn-success">Submit</button>
+    <button type="submit" value="Add" class="btn btn-success">Submit</button>
 }
-

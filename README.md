@@ -1,4 +1,6 @@
-This program saves recipes using several abstractions helpful for creating a menu.
+Presentation slides: https://docs.google.com/presentation/d/1HY1KNDYwP21-TCHAIL90qVoLJ8kwX_UQs05W18PhTYY/edit?usp=sharing
+
+Larder saves recipes using several abstractions helpful for creating a menu.
 
 Recipes- a note with zero or more instructions, ingredients, and seasons.
 Plating- a plating style. Each recipe can have zero or more plating styles.

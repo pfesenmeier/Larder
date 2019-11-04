@@ -164,6 +164,23 @@ namespace Larder.Services
             }
         }
 
+        public List<RecipeListItem> GetRecipesByLarderId(int id)
+        {
+            using (var context = new CookbookContext())
+            {
+                return context
+                                .Recipes
+                                .Where(x => x.Ingredients.Any(i => i.TemplateId == id))
+                                .Select(
+                                        r =>
+                                        new RecipeListItem()
+                                        {
+                                            ID = r.ID,
+                                            Name = r.Name,
+                                        }).ToList();
+            }
+        }
+
         public List<PlatingListItem> GetPlatingsByRecipeId(int id)
         {
 

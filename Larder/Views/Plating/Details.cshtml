@@ -5,7 +5,7 @@
 }
 
 @Html.Partial("_FoodDetails", Model)
-@Html.Partial("_IndexBody", Model.Recipes)
+@Html.Partial("_RecipeList", Model.Recipes)
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

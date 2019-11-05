@@ -83,15 +83,19 @@ namespace Larder.Services
             }
             if (season.Spring)
             {
-                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Spring == true));
+                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Spring == true && !FilteredLarders.Any(k => k.ID == l.ID)));
             }
             if (season.Summer)
             {
-                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Summer == true));
+                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Summer == true && !FilteredLarders.Any(k => k.ID == l.ID)));
             }
             if (season.Winter)
             {
-                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Winter == true));
+                FilteredLarders.AddRange(allLarders.Where(l => l.Season.Winter == true && !FilteredLarders.Any(k => k.ID == l.ID)));
+            }
+            if (FilteredLarders.Count() == 0)
+            {
+                return allLarders;
             }
             return FilteredLarders;
         }

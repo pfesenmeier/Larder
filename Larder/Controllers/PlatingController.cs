@@ -62,7 +62,7 @@ namespace Larder.Controllers
             if (service.AddPlating(model))
             {
                 TempData["Save Result"] = "Changes Saved.";
-                return RedirectToAction("Create", "Recipe", new { id = model.RecipeId });
+                return RedirectToAction("Index", "Recipe", new { id = model.RecipeId });
             }
             else
             {

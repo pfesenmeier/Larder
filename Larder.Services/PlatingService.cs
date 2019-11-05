@@ -37,7 +37,7 @@ namespace Larder.Services
                         });
                     }
                 }
-                return context.SaveChanges() != 0;
+                return context.SaveChanges() != -1;
             
                 
             }

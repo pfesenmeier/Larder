@@ -6,14 +6,17 @@
 
 <h1 class="display-4">Edit</h1>
 
-<form class="form mb-3">
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.ID)
-    @Html.Partial("_FoodCreate", Model)
-    @Html.Partial("_SeasonsChecklistEdit", Model)
-    <button type="submit" value="Edit" class="btn btn-success">Submit</button>
-</form>
+@using (Html.BeginForm())
+{
+    <form class="form mb-3">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        @Html.Partial("_FoodCreate", Model)
+        @Html.Partial("_SeasonsChecklistEdit", Model)
+        <button type="submit" value="Edit" formaction="post" class="btn btn-success">Submit</button>
+    </form>
+}
 
 <div>
     @Html.ActionLink("Back to List", "Index")

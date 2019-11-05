@@ -80,15 +80,19 @@ namespace Larder.Services
             }
             if (season.Spring)
             {
-                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Spring == true));
+                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Spring == true && !FilteredRecipes.Any(k => k.ID == l.ID)));
             }
             if (season.Summer)
             {
-                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Summer == true));
+                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Summer == true && !FilteredRecipes.Any(k => k.ID == l.ID)));
             }
             if (season.Winter)
             {
-                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Winter == true));
+                FilteredRecipes.AddRange(allRecipes.Where(l => l.Season.Winter == true && !FilteredRecipes.Any(k => k.ID == l.ID)));
+            }
+            if (FilteredRecipes.Count() == 0)
+            {
+                return allRecipes;
             }
             return FilteredRecipes;
         }

@@ -22,13 +22,22 @@ namespace Larder.Services
         {
             using (var context = new CookbookContext())
             {
-                var season = new Season()
+                var season = new Season();
+                if (model.Season == null)
                 {
-                    AuthorID = userId,
-                    Summer = model.Season.Summer,
-                    Fall = model.Season.Fall,
-                    Winter = model.Season.Winter,
-                    Spring = model.Season.Spring
+                    season.AuthorID = userId;
+                    season.Summer = false;
+                    season.Fall = false;
+                    season.Winter = false;
+                    season.Spring = false;
+                }
+                else
+                {
+                    season.AuthorID = userId;
+                    season.Summer = model.Season.Summer;
+                    season.Fall = model.Season.Fall;
+                    season.Winter = model.Season.Winter;
+                    season.Spring = model.Season.Spring;
                 };
 
                 context.Seasons.Add(season);
